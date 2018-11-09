@@ -1,0 +1,14 @@
+{
+  "name": "initial_test",
+  "version": "1.0.0",
+  "description": "Initial drafting of website that is frontend/visual oriented",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Anthony Tsui",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

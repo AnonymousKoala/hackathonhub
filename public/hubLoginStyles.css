@@ -1,0 +1,100 @@
+.container-fluid{
+	/*width: 100vh !important;*/
+}
+
+#infoBg{
+	background-image: url("img/HackathonHubPhoto.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #fff;
+	width: 100vw;
+	height: 100%;
+}
+
+.white {
+	background-color: #fff;
+	height: 1%;
+}
+
+span{
+	margin-left: 5%;
+	-webkit-text-stroke-width: 1px;
+	color: rgba(255,255,255,0);
+   -webkit-text-stroke-color: white;
+}
+
+#location{
+	margin-bottom: 1%;
+}
+
+#location{
+	object-position: left;
+}
+
+h1{
+	font-size: 600%;
+	text-align: right;
+
+}
+#line {
+	color: #fff;
+	font-weight: 800px;
+}
+
+#formBg {
+	background-color: #0d9981;
+	text-align: center;
+	width:100vw;
+	height: 100vh;
+}
+
+.eventbox{
+	color:lightblue;
+	border:15px solid #fff;
+	margin: 25px;
+	width:100%;
+	height:100%;
+}
+
+
+.subH2 {
+	padding-left: 2%;
+	margin-top:10%;
+}
+ p{
+ 	padding-left: 2%;
+ 	padding-right: 20%;
+ 	line-height: 2.5em;
+ 	color: #c5cddb;
+ }
+
+#logo {
+ 	padding-top: 15%;
+ }
+
+#emailForm{
+ 	padding-top: 20%;
+}
+
+#pwForm {
+	padding-top: 5%;
+}
+
+.btn {
+	text-align: center;
+	box-shadow: 
+}
+
+#accLink {
+	font-size: 50%;
+	color: white !important;
+	text-align: center;
+}
+
+a {
+	font-size: 90% !important;
+}
+
+#dontHave {
+	padding-top: 4%;
+}
