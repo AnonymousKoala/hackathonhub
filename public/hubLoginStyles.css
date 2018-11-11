@@ -5,6 +5,7 @@
 #infoBg{
 	background-image: url("img/HackathonHubPhoto.jpg");
 	background-size: cover;
+	/*background-color: #034439;*/
 	background-repeat: no-repeat;
 	color: #fff;
 	width: 100vw;
@@ -25,10 +26,7 @@ span{
 
 #location{
 	margin-bottom: 1%;
-}
-
-#location{
-	object-position: left;
+	margin-right: -2%;
 }
 
 h1{
@@ -42,38 +40,37 @@ h1{
 }
 
 #formBg {
-	background-color: #0d9981;
+	background-color:  #034439;
+	/*background-color: #0d9981;*/
 	text-align: center;
 	width:100vw;
 	height: 100vh;
 }
 
-.eventbox{
-	color:lightblue;
-	border:15px solid #fff;
-	margin: 25px;
-	width:100%;
-	height:100%;
-}
-
-
 .subH2 {
 	padding-left: 2%;
-	margin-top:10%;
+	margin-top:12%;
 }
  p{
  	padding-left: 2%;
  	padding-right: 20%;
  	line-height: 2.5em;
- 	color: #c5cddb;
+ 	color: #fff;
  }
 
 #logo {
- 	padding-top: 15%;
+ 	padding-top: 20%;
  }
 
+.form-control {
+	background-color: rgba(255,255,255,0) !important;
+	border-color: rgba(119,3,86,0) !important;
+	border-bottom-color: rgba(119,3,86,.25) !important;
+}
+
+
 #emailForm{
- 	padding-top: 20%;
+ 	padding-top: 8%;
 }
 
 #pwForm {
@@ -81,6 +78,7 @@ h1{
 }
 
 .btn {
+	margin-top: 4%;
 	text-align: center;
 	box-shadow: 
 }
@@ -92,7 +90,7 @@ h1{
 }
 
 a {
-	font-size: 90% !important;
+	font-size: 100% !important;
 }
 
 #dontHave {
