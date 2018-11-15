@@ -1,0 +1,124 @@
+.container-fluid{
+  padding: 0 !important;
+  width: 100vw !important;
+  overflow: hidden;
+}
+.upperThird {
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-bottom: 2%;
+	background-image: url("img/Blue-green-gradient.jpg")
+}
+
+img {
+	margin-top: 1.4%;
+	margin-left: 10%;
+}
+
+
+
+.topLine{
+	padding-bottom: 1%;
+}
+
+span{
+   -webkit-text-stroke-width: .5px;
+   color: rgba(255,255,255,0);
+   -webkit-text-stroke-color: white;
+}
+
+h4{
+	color: #FFF !important;
+	margin-top: 1%;
+	margin-left: .5%;
+}
+
+.greyBg {
+	background-color:rgba(190,190,190,0.55);
+	border-radius: 25px;
+
+}
+.seeThru{
+	margin-right: 20%;
+}
+
+.profilePic {
+	margin-top: 25%;
+	margin-left: 25%;
+	padding-bottom: 35%;
+}
+
+
+
+.Link {
+	padding-left: 10%;
+	font-weight: 200;
+	color: #FFF;
+	margin-right: 1%;
+}
+
+.AccLink {
+	font-weight: 200;
+	margin-right: 1%;
+}
+
+.HelpLink {
+	font-weight: 200;
+	color: #FFF;
+	margin-right: 1%;
+}
+
+a {
+	color: white !important;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+h1 {
+	margin-top: 3%;
+	color: #FFF;
+	font-weight: 100;
+	font-size: 300%;
+	text-decoration-line: 10%;
+	/*text-decoration: 20em underline;*/
+}
+
+h5 {
+	color: #FFF;
+	font-weight: 100;
+}
+
+.info {
+	padding-right: 8%;
+}
+
+.lowerTwoThirds{
+	background-color: rgba(54, 155, 148,.35);
+	height: 100%; 
+	padding: 2% 8%;
+}
+
+.teamBg {
+	border-radius: 10px;
+	background-color: rgba(31, 76, 73,.95);
+}
+
+.h4Teams {
+	font-size: 200%
+	font-weight: 200;
+	text-align: center;
+}
+
+li {
+	color: #FFF;
+	font-weight: 200;
+	font-size: 150%;/*
+	border-bottom: solid;
+	border-color: #000;*/
+	padding: 5% 0;
+}
+
+
+
