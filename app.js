@@ -9,7 +9,7 @@ app.get('/', function(req,res) {
 });
 
 app.post('/homepage',function(req,res){
-	res.sendFile(__dirname + '/views/homepage.html');
+	res.sendFile(__dirname + '/views/hubDashboard.html');
 });
 
 app.listen(PORT, () => {
