@@ -8,7 +8,7 @@ app.get('/', function(req,res) {
 	res.sendFile(__dirname + '/views/hubLogin.html');
 });
 
-app.post('/homepage',function(req,res){
+app.post('/hubDashboard',function(req,res){
 	res.sendFile(__dirname + '/views/hubDashboard.html');
 });
 
