@@ -7,7 +7,7 @@
 	padding-left: 2%;
 	padding-right: 2%;
 	padding-bottom: 2%;
-	background-image: url("img/Blue-green-gradient.jpg");
+	background-image: url("/assets/img/Blue-green-gradient.jpg");
 }
 
 img {
@@ -100,7 +100,7 @@ h5 {
 .lowerTwoThirds{
 	/*background-color: rgba(54, 155, 148,.35);
 	height: 100%;*/ 
-	background-image: url("img/HackathonHubPhoto.jpg");
+	background-image: url("/assets/img/HackathonHubPhoto.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 2% 8%;

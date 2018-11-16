@@ -3,7 +3,7 @@
 }
 
 #infoBg{
-	background-image: url("img/HackathonHubPhoto.jpg");
+	background-image: url("/assets/img/HackathonHubPhoto.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	color: #fff;

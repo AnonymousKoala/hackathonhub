@@ -52,7 +52,7 @@ router.get('/profile',
 });
 
 router.get('/', (req, res) =>{
-  res.sendFile(path.join(__dirname, '../views', 'hubLogin.html'))
+  res.sendFile(path.join(__dirname, '../public','login/hubLogin.html'))
 })
 
 
