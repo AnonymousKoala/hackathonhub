@@ -4,11 +4,19 @@
   "description": "Initial drafting of website that is frontend/visual oriented",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon -L app.js"
   },
   "author": "Anthony Tsui",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "bcrypt-nodejs": "0.0.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
   }
 }

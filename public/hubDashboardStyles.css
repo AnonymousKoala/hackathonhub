@@ -1,18 +1,18 @@
 .container-fluid{
   padding: 0 !important;
-  width: 100vw !important;
+  width: 100% !important;
   overflow: hidden;
 }
 .upperThird {
 	padding-left: 2%;
 	padding-right: 2%;
 	padding-bottom: 2%;
-	background-image: url("img/Blue-green-gradient.jpg")
+	background-image: url("img/Blue-green-gradient.jpg");
 }
 
 img {
-	margin-top: 1.4%;
-	margin-left: 10%;
+	margin-top: 25%;
+	margin-left: 75%;
 }
 
 
@@ -51,6 +51,7 @@ h4{
 
 
 .Link {
+	margin-top: 5%;
 	padding-left: 10%;
 	font-weight: 200;
 	color: #FFF;
@@ -58,11 +59,13 @@ h4{
 }
 
 .AccLink {
+	margin-top: 8%;
 	font-weight: 200;
 	margin-right: 1%;
 }
 
 .HelpLink {
+	margin-top: 13%;
 	font-weight: 200;
 	color: #FFF;
 	margin-right: 1%;
@@ -95,14 +98,17 @@ h5 {
 }
 
 .lowerTwoThirds{
-	background-color: rgba(54, 155, 148,.35);
-	height: 100%; 
+	/*background-color: rgba(54, 155, 148,.35);
+	height: 100%;*/ 
+	background-image: url("img/HackathonHubPhoto.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 	padding: 2% 8%;
 }
 
 .teamBg {
 	border-radius: 10px;
-	background-color: rgba(31, 76, 73,.95);
+	background-color: rgba(31, 76, 73,.85);
 }
 
 .h4Teams {
@@ -121,4 +127,7 @@ li {
 }
 
 
+.right {
+	margin-right: 5%;
+}
 
