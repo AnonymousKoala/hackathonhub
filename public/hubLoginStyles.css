@@ -5,7 +5,6 @@
 #infoBg{
 	background-image: url("img/HackathonHubPhoto.jpg");
 	background-size: cover;
-	/*background-color: #034439;*/
 	background-repeat: no-repeat;
 	color: #fff;
 	width: 100vw;
@@ -83,7 +82,7 @@ h1{
 	box-shadow: 
 }
 
-#accLink {
+#join {
 	font-size: 50%;
 	color: white !important;
 	text-align: center;
@@ -96,3 +95,52 @@ a {
 #dontHave {
 	padding-top: 4%;
 }
+
+.signUpBg {
+	margin-left: -1.2%;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.7);
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+
+.signUp-content {
+	width: 700px;
+	height: 400px;
+	background-color: rgba(178, 125, 41,.95);
+	border-radius: 5px;
+	text-align: left;
+	padding: 20px;
+	box-shadow: 0px 0px 10px #888888;
+}
+
+.popUpText{
+	text-align: center;
+	color: #1b302b;
+	text-shadow: 2px 2px 5px #444; 
+	font-weight: 400;
+	font-size: 250%;
+	 -webkit-text-stroke-color: rgba(0,0,0,0);
+	position: relative;
+}
+
+.popUp{
+	width: 50%;
+	display: block;
+	margin: 1% auto;
+}
+
+.close {
+	top: 1;
+	right: 10;
+	font-size: 42px;
+	transform: rotate(45deg);
+}
+
+
+
