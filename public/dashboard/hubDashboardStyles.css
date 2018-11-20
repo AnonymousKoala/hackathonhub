@@ -18,6 +18,7 @@ img {
 
 
 .topLine{
+	padding-top: 1%;
 	padding-bottom: 1%;
 }
 
@@ -108,7 +109,7 @@ h5 {
 
 .teamBg {
 	border-radius: 10px;
-	background-color: rgba(31, 76, 73,.85);
+	background-color: rgba(113, 186, 164,.85);
 }
 
 .h4Teams {
