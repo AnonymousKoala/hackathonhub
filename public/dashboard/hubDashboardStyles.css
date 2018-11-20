@@ -7,7 +7,7 @@
 	padding-left: 2%;
 	padding-right: 2%;
 	padding-bottom: 2%;
-	background-image: url("/assets/img/Blue-green-gradient.jpg");
+	background-image: linear-gradient(to bottom right, rgb(4, 145, 93), rgb(87, 219, 203));
 }
 
 img {
