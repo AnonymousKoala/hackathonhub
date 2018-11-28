@@ -1,0 +1,75 @@
+body{
+	background-color: #034439;
+}
+
+.container-fluid{
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.topLine{
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+#seeThru {
+	margin-left: 5%;
+	margin-right: 40%;
+}
+
+#Link {
+	font-weight: 200;
+	color: #FFF;
+}
+
+#AccLink {
+	font-weight: 200;
+}
+
+#HelpLink {
+	font-weight: 200;
+	color: #FFF;
+}
+
+img {
+	vertical-align: unset !important;
+	padding: 1%;
+}
+
+
+span{
+   -webkit-text-stroke-width: .5px;
+   color: rgba(255,255,255,0);
+   -webkit-text-stroke-color: white;
+}
+
+a {
+	color: white !important;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+h4{
+	color: #FFF !important;
+	margin-top: 1%;
+	margin-left: .5%;
+}
+
+#featuredArea {
+	background-color: rgba(255,255,255,.5);
+	height: 375px;
+	width: 100%;
+}
+
+.upComing {
+	margin: 0 auto;
+	padding: 0 10%;
+	height: 450px;
+	padding-top: 2%;
+	width: 75%;
+	background-color: white;
+	color: black;
+	text-align: center;
+}

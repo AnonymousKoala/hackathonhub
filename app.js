@@ -31,7 +31,7 @@ app.use(express.static('public'));
 
 
 
-const controllers = require('./controllers/');
+const controllers = require('./controllers/auth.js');
 app.use(controllers)
 
 app.listen(PORT, () => {

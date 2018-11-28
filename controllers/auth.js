@@ -52,12 +52,12 @@ router.get('/profile',
 });
 
 router.get('/', (req, res) =>{
-  res.sendFile(path.join(__dirname, '../public','login/hubLogin.html'))
-})
+  res.sendFile(path.join(__dirname, '../public','login/hubLogin.html'));
+});
 
 
-router.post('/hubDashboard',function(req,res){
-  res.sendFile(path.join(__dirname, '../views', 'hubDashboard.html'));
+router.post('/dashboard',function(req,res){
+  res.sendFile(path.join(__dirname, '../public', 'dashboard/hubDashboard.html'));
 });
 
 
