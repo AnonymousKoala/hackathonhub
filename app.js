@@ -26,15 +26,9 @@ app.use(passport.session());
 
 
 app.use(express.static('public'));
-
-
-
-
-
 const controllers = require('./controllers/auth.js');
-app.use(controllers)
+app.use(controllers);
 
 app.listen(PORT, () => {
-
 	console.log(`app is up and running on ${PORT}`);
 });
