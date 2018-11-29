@@ -1,10 +1,28 @@
-body{
+body {
 	background-color: #034439;
 }
 
-.container-fluid{
-  padding: 0 !important;
-  overflow: hidden;
+#particles-js {
+	background-color: #034439;
+	height: 35vh;
+	position: sticky;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+h2 {
+	text-align: center;
+	color: #fff;
+	font-weight: 200;
+	margin-top: 5%;
+	font-size: 500%;
+}
+
+.hacks {
+	height: 100vh;
 }
 
 .topLine{
@@ -13,8 +31,8 @@ body{
 }
 
 #seeThru {
-	margin-left: 5%;
-	margin-right: 40%;
+/*	margin-left: 5%;
+	margin-right: 40%;*/
 }
 
 #Link {
@@ -32,7 +50,7 @@ body{
 }
 
 img {
-	vertical-align: unset !important;
+	
 	padding: 1%;
 }
 
@@ -58,18 +76,12 @@ h4{
 }
 
 #featuredArea {
-	background-color: rgba(255,255,255,.5);
-	height: 375px;
-	width: 100%;
+	background-image: radial-gradient(#e5dec0,#1d6358,#034439);
+	height: 70vh;
 }
 
-.upComing {
-	margin: 0 auto;
-	padding: 0 10%;
-	height: 450px;
-	padding-top: 2%;
-	width: 75%;
-	background-color: white;
-	color: black;
+.footer {
+	background-color: #61706e;
+	height: 19vh;
 	text-align: center;
 }

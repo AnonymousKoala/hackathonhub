@@ -7,7 +7,8 @@
 	padding-left: 2%;
 	padding-right: 2%;
 	padding-bottom: 2%;
-	background-image: linear-gradient(to bottom right, rgb(4, 145, 93), rgb(87, 219, 203));
+	background-image: radial-gradient(#1d6358,#1d6358,#034439,#034439);
+	/*background-image: linear-gradient(to bottom right, rgb(4, 145, 93), rgb(87, 219, 203));*/
 }
 
 img {
@@ -35,7 +36,7 @@ h4{
 }
 
 .greyBg {
-	background-color:rgba(190,190,190,0.55);
+	background-color:rgba(190,190,190,0.5);
 	border-radius: 25px;
 
 }
@@ -52,7 +53,7 @@ h4{
 
 
 .Link {
-	margin-top: 5%;
+	padding-top: 10%;
 	padding-left: 10%;
 	font-weight: 200;
 	color: #FFF;
@@ -101,7 +102,7 @@ h5 {
 .lowerTwoThirds{
 	/*background-color: rgba(54, 155, 148,.35);
 	height: 100%;*/ 
-	background-image: url("/assets/img/HackathonHubPhoto.jpg");
+	background-image: url("img/HackathonHubPhoto.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 2% 8%;
@@ -131,3 +132,5 @@ li {
 .right {
 	margin-right: 5%;
 }
+
+
