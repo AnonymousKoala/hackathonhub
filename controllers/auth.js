@@ -55,9 +55,9 @@ router.get('/', (req, res) =>{
   res.sendFile(path.join(__dirname, '../public','login/hubLogin.html'));
 });
 
-router.get('/', (req, res) =>{
-  res.sendFile(path.join(__dirname, '../public','mainPage/hompage.html'));
-});
+// router.get('/', (req, res) =>{
+//   res.sendFile(path.join(__dirname, '../public','mainPage/hompage.html'));
+// });
 
 // router.post('/mainPage',function(req,res){
 //   res.sendFile(path.join(__dirname, '../public', 'mainPage/homePage.html'));
@@ -66,6 +66,11 @@ router.get('/', (req, res) =>{
 router.post('/homepage',function(req,res){
   res.sendFile(path.join(__dirname,'../public','mainPage/homepage.html'));
 });
+
+router.get('/homepage',function(req,res){
+  res.sendFile(path.join(__dirname,'../public','mainPage/homepage.html'));
+});
+
 
 router.get('/register', function(req,res){
   res.sendFile(path.join(__dirname, '../views', 'register.html'));

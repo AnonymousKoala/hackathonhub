@@ -1,3 +1,6 @@
+body {
+	background-color: #034439;
+}
 .container-fluid{
   padding: 0 !important;
   width: 100% !important;
@@ -14,14 +17,17 @@
 img {
 	margin-top: 1%;
 	margin-left: 2%;
-	/*margin-left: 75%;*/
 }
-
-
 
 .topLine{
 	padding-top: 1%;
 	padding-bottom: 1%;
+}
+
+.Link {
+	font-weight: 200 !important;
+	color: #FFF;
+	text-align: right;
 }
 
 span{
@@ -31,6 +37,7 @@ span{
 }
 
 h4{
+
 	color: #FFF !important;
 	margin-top: 1%;
 	margin-left: .5%;
@@ -41,37 +48,11 @@ h4{
 	border-radius: 25px;
 
 }
-.seeThru{
-	margin-right: 48%;
-}
 
 .profilePic {
 	margin-top: 25%;
 	margin-left: 25%;
 	padding-bottom: 35%;
-}
-
-
-
-.Link {
-/*	padding-top: 10%;*/
-	padding-left: 10%;
-	font-weight: 200;
-	color: #FFF;
-	margin-right: 1%;
-}
-
-.AccLink {
-	/*margin-top: 8%;*/
-	font-weight: 200;
-	margin-right: 1%;
-}
-
-.HelpLink {
-/*	margin-top: 13%;*/
-	font-weight: 200;
-	color: #FFF;
-	/*margin-right: 1%;*/
 }
 
 a {

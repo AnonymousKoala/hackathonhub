@@ -1,3 +1,5 @@
+/*@import "compass/css3";
+*/
 body {
 	background-color: #034439;
 }
@@ -6,6 +8,7 @@ body {
 	background-color: #034439;
 	height: 35vh;
 	position: sticky;
+
 }
 
 canvas {
@@ -23,6 +26,7 @@ h2 {
 
 .hacks {
 	height: 100vh;
+	text-shadow: 1px 0px 15px #82805f;
 }
 
 .topLine{
@@ -30,28 +34,15 @@ h2 {
 	padding-bottom: 1%;
 }
 
-#seeThru {
-/*	margin-left: 5%;
-	margin-right: 40%;*/
-}
-
 #Link {
 	font-weight: 200;
 	color: #FFF;
-}
-
-#AccLink {
-	font-weight: 200;
-}
-
-#HelpLink {
-	font-weight: 200;
-	color: #FFF;
+	text-align: right;
 }
 
 img {
-	
-	padding: 1%;
+	margin-top: 1%;
+	margin-left: 2%;
 }
 
 
@@ -75,13 +66,21 @@ h4{
 	margin-left: .5%;
 }
 
-#featuredArea {
+#carouselArea {
 	background-image: radial-gradient(#e5dec0,#1d6358,#034439);
 	height: 70vh;
 }
 
 .footer {
 	background-color: #61706e;
-	height: 19vh;
+	height: 120px;
 	text-align: center;
 }
+
+hr {
+	display: block;
+	border-style: solid;
+    border-width: .5px;
+    border-color: #eee;
+}
+
