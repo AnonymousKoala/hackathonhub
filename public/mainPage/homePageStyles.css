@@ -42,7 +42,7 @@ h2 {
 
 img {
 	margin-top: 1%;
-	margin-left: 2%;
+/*	margin-left: 2%;*/
 }
 
 
@@ -66,7 +66,12 @@ h4{
 	margin-left: .5%;
 }
 
-#carouselArea {
+h5{
+	text-align: center;
+	color: #fff;
+}
+
+#carouselExampleIndicators {
 	background-image: radial-gradient(#e5dec0,#1d6358,#034439);
 	height: 70vh;
 }
@@ -82,5 +87,11 @@ hr {
 	border-style: solid;
     border-width: .5px;
     border-color: #eee;
+}
+
+.carousel-caption {
+	background-color: rgba(0, 0, 0, .85);
+	border-radius: 60px;
+	padding: 0 !important;
 }
 
