@@ -1,9 +1,10 @@
 const express = require('express');
-const models = require('../models/Users.js');
+const models = require('../models');
 const passport = require('../middlewares/auth');
 
 const router = express.Router();
 const User = models.User;
+const Hackathons = models.Hackathons;
 
 var path = require('path');
 
@@ -64,7 +65,8 @@ router.get('/', (req, res) =>{
 // });
 
 router.post('/homepage',function(req,res){
-  res.sendFile(path.join(__dirname,'../public','mainPage/homepage.html'));
+  var x = User.findAll({where: {id: 1,},raw:true}).then(function(result) { return result;})
+  res.render(path.join(__dirname,'../public','mainPage/homepage.html'), {data: x});
 });
 
 router.get('/homepage',function(req,res){

@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8000;
+const models = require('./models');
 
 
-//Passport code ttaken from authentication.md from Edgardo
+//Passport code taken from authentication.md from Edgardo
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const passport = require('./middlewares/auth');
@@ -26,11 +27,14 @@ app.use(passport.session());
 
 
 app.use(express.static('public'));
+
 const controllers = require('./controllers/auth.js');
 app.use(controllers);
 
-app.listen(PORT, () => {
-	console.log(`app is up and running on ${PORT}`);
+
+models.sequelize.sync({force: false})
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is up and running on port: ${PORT}`)
+    });
 });
-
-
