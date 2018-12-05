@@ -65,8 +65,9 @@ router.get('/', (req, res) =>{
 // });
 
 router.post('/homepage',function(req,res){
-  var x = User.findAll({where: {id: 1,},raw:true}).then(function(result) { return result;})
-  res.render(path.join(__dirname,'../public','mainPage/homepage.html'), {data: x});
+  //var x = User.findAll({where: {id: 1,},raw:true}).then(function(result) { return result;})
+  //res.render(path.join(__dirname,'../public','mainPage/homepage.html'), {data: x});
+  res.sendFile(path.join(__dirname,'../public','mainPage/homepage.html'))
 });
 
 router.get('/homepage',function(req,res){
