@@ -1,11 +1,14 @@
-/*@import "compass/css3";
-*/
 body {
-	background-color: #034439;
+	background-color: #034439 !important;
+	background: linear-gradient(178deg, #034439, #2b6d62, #52beac, #3d9889, #034439);
+	background-repeat: no-repeat;
+
 }
 
+
 #particles-js {
-	background-color: #034439;
+	/*background-color: #034439;*/
+	background-color: rgba(1,1,1,0);
 	height: 35vh;
 	position: sticky;
 
@@ -21,13 +24,15 @@ h2 {
 	color: #fff;
 	font-weight: 200;
 	margin-top: 5%;
-	font-size: 500%;
+	font-size: 400%;
 }
 
 .hacks {
-	height: 100vh;
+	height: 100%;
 	text-shadow: 1px 0px 15px #82805f;
 }
+
+
 
 .topLine{
 	padding-top: 1%;
@@ -40,9 +45,17 @@ h2 {
 	text-align: right;
 }
 
+#Create,h1 {
+	text-align: center;
+	color: #fff;
+	text-shadow: -1px -1px 12px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+	padding: 4.5% 0;
+	font-weight: 210;
+	font-size: 180% !important;
+}
+
 img {
 	margin-top: 1%;
-	margin-left: 2%;
 }
 
 
@@ -66,15 +79,21 @@ h4{
 	margin-left: .5%;
 }
 
-#carouselArea {
-	background-image: radial-gradient(#e5dec0,#1d6358,#034439);
-	height: 70vh;
+h5{
+	text-align: center;
+	color: #fff;
 }
 
 .footer {
 	background-color: #61706e;
 	height: 120px;
+	color: #000;
 	text-align: center;
+	font-family: 'IM Fell French Canon SC', serif;
+}
+
+#company {
+	padding-top: 4%;
 }
 
 hr {
@@ -84,3 +103,39 @@ hr {
     border-color: #eee;
 }
 
+.carousel-caption {
+	background-color: rgba(20, 130, 111, .85);
+	border-radius: 60px;
+	padding: 0 !important;
+}
+
+.event-name {
+	text-align: left;
+}
+
+.subTitle {
+	font-size: 80%;
+	color: rgba(249, 254, 251,.7);
+	margin-top: -3%;
+}
+
+
+
+.mb-1 {
+	margin-top: .15rem !important;
+}
+
+.media {
+	padding: 2% 5%;
+    background-color: rgba(255,255,255,.2);
+}
+
+.media-list a {
+	color: #212529 !important;
+	text-shadow: none;
+}
+
+.media-list a:hover {
+	color: white !important;
+	text-shadow: 1px 0px 25px #af6d0a;
+}
