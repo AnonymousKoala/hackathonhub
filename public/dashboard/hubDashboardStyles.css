@@ -10,7 +10,7 @@ body {
 	padding-left: 2%;
 	padding-right: 2%;
 	padding-bottom: 2%;
-	background-image: radial-gradient(#1d6358,#1d6358,#034439,#034439);
+	background: linear-gradient(178deg, #034439, #2b6d62, #52beac, #3d9889, #034439);
 	/*background-image: linear-gradient(to bottom right, rgb(4, 145, 93), rgb(87, 219, 203));*/
 }
 
@@ -34,13 +34,15 @@ span{
    -webkit-text-stroke-width: .5px;
    color: rgba(255,255,255,0);
    -webkit-text-stroke-color: white;
+
 }
 
-h4{
+.seeThru{
 
 	color: #FFF !important;
 	margin-top: 1%;
 	margin-left: .5%;
+
 }
 
 .greyBg {
@@ -57,13 +59,14 @@ h4{
 
 a {
 	color: white !important;
+	font-weight: 100 !important;
 }
 
 a:hover {
 	text-decoration: none !important;
 }
 
-h1 {
+.info h1 {
 	margin-top: 3%;
 	color: #FFF;
 	font-weight: 100;
@@ -72,7 +75,7 @@ h1 {
 	/*text-decoration: 20em underline;*/
 }
 
-h5 {
+.info h5 {
 	color: #FFF;
 	font-weight: 100;
 }
