@@ -1,9 +1,21 @@
 const express = require('express');
+
+const exphbs = require('express-handlebars');
+
+var path = require('path');
+
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8000;
 const models = require('./models');
 
+
+app.use(express.static('public'));
+
+
+app.engine('hbs', exphbs({extname: '.hbs', layoutsDir: __dirname + '/views/layouts/'}));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 //Passport code taken from authentication.md from Edgardo
 const cookieParser = require('cookie-parser');
@@ -26,7 +38,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use(express.static('public'));
 
 const controllers = require('./controllers/auth.js');
 app.use(controllers);

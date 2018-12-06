@@ -27,6 +27,19 @@ router.post('/signup', (req,res) => {
   });
 });
 
+router.post('/addhackathon', (req, res) => {
+  Hackathons.create({
+    eventName: req.body.eventName,
+    eventDescription: req.body.eventDescription,
+    eventCity: req.body.eventCity,
+    eventState: req.body.eventState,
+  }).then((hackathons) =>{
+    res.redirect('/hackathonsadd');
+  }).catch(() => {
+    res.status(400).json({msg : "error making hackathon"});
+  });
+
+});
 
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/auth/error' }),
@@ -53,7 +66,7 @@ router.get('/profile',
 });
 
 router.get('/', (req, res) =>{
-  res.sendFile(path.join(__dirname, '../public','login/hubLogin.html'));
+  res.render('hubLogin');
 });
 
 // router.get('/', (req, res) =>{
@@ -65,22 +78,27 @@ router.get('/', (req, res) =>{
 // });
 
 router.post('/homepage',function(req,res){
-  //var x = User.findAll({where: {id: 1,},raw:true}).then(function(result) { return result;})
+  Hackathons.findAll({raw: true}).then((result) => {
+      res.render('homepage', {result: result});
+      //res.json({msg: "This is wht shows: " + result[0].id});
+    })
+    .catch(error =>{
+      console.log('Error:', error);
+    });
+  
+
+  //var x = Hackathons.findAll({where: {id: 1,},raw:true}).then(function(result) { return result;})
   //res.render(path.join(__dirname,'../public','mainPage/homepage.html'), {data: x});
-  res.sendFile(path.join(__dirname,'../public','mainPage/homepage.html'))
+  //res.render('homepage', { user: x[0] , example:'test' });
+});
+
+router.get('/hackathonsadd', function(req,res){
+  res.render('hackathonsadd');
 });
 
 router.get('/homepage',function(req,res){
   res.sendFile(path.join(__dirname,'../public','mainPage/homepage.html'));
 });
-
-
-router.get('/register', function(req,res){
-  res.sendFile(path.join(__dirname, '../views', 'register.html'));
-});
-
-
-
 
 
 module.exports = router;
