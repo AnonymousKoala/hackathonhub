@@ -41,6 +41,11 @@ router.post('/addhackathon', (req, res) => {
 
 });
 
+router.get('/hackathon', (req, res) => {
+  res.render('hackathon');
+
+})
+
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/auth/error' }),
   (req, res) => {
@@ -79,7 +84,7 @@ router.get('/', (req, res) =>{
 
 router.post('/homepage',function(req,res){
   Hackathons.findAll({raw: true}).then((result) => {
-      res.render('homepage', {result: result});
+      res.render('homepage', {result: result, featured1: result[0], featured2: result[1], featured3 : result[2]});
       //res.json({msg: "This is wht shows: " + result[0].id});
     })
     .catch(error =>{
