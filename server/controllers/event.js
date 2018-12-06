@@ -69,6 +69,23 @@ module.exports = {
     .catch((error) => res.status(400).send(error));
   },
 
+  destroy(req, res) {
+  return event
+    .findOne({where:{eventID: req.params.eventID}})
+    .then(event => {
+      if (!event) {
+        return res.status(400).send({
+          message: 'Event Not Found',
+        });
+      }
+      return event
+        .destroy()
+        .then(() => res.status(204).send({message: 'Event successfully deleted.'}))
+        .catch(error => res.status(400).send(error));
+    })
+    .catch(error => res.status(400).send(error));
+},
+
 
 
 };
