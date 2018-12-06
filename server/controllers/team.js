@@ -47,13 +47,7 @@ module.exports = {
       }
       return team
         .update({
-          teamName: req.body.teamName || team.teamName,
-          timeStart: req.body.timeStart || team.timeStart,
-          timeEnd: req.body.timeEnd || team.timeEnd,
-          teamDescription: req.body.teamDescription || team.teamDescription,
-          teamAddress: req.body.teamAddress || team.teamAddress,
-          teamCity: req.body.teamCity || team.teamCity,
-          teamZip: req.body.teamZip || team.teamZip
+          teamName: req.body.teamName || team.teamName
         })
         .then(() => res.status(200).send(team))  // Send back the updated todo.
         .catch((error) => res.status(400).send(error));

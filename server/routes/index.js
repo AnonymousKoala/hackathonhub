@@ -10,6 +10,9 @@ module.exports = (app) => {
 
   app.post('/api/users', userController.create);
   app.get('/api/users', userController.list);
+  app.get('/api/users/:userID', userController.retrieve);
+  app.put('/api/users/:userID', userController.update);
+  app.delete('/api/users/:userID', userController.destroy);
 
   app.post('/api/teams', teamController.create);
   app.get('/api/teams', teamController.list);
