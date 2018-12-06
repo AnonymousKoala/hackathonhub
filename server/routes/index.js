@@ -19,5 +19,6 @@ module.exports = (app) => {
   app.post('/api/events', eventController.create);
   app.get('/api/events', eventController.list);
   app.get('/api/events/:eventID', eventController.retrieve);
+  app.put('/api/events/:eventID', eventController.update);
 
 };
