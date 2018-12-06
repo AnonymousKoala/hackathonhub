@@ -5,6 +5,9 @@ const passport = require('../middlewares/auth');
 const router = express.Router();
 const User = models.User;
 const Hackathons = models.Hackathons;
+const Teams = models.Teams;
+const Attendees = models.Attendees;
+
 
 var path = require('path');
 
@@ -42,9 +45,38 @@ router.post('/addhackathon', (req, res) => {
 });
 
 router.get('/hackathon', (req, res) => {
-  res.render('hackathon');
+  var result2;
+  var param_id = req.param('id');
+  Hackathons.findAll({where:{id: '2'}, raw:true}).then((result) => {
+    result2 = result[0];
+  });
+  Hackathons.findAll({where: {id: param_id}, raw: true}).then((result) => {
+      res.render('hackathon', {result: result[0], result2: result2});
+      //res.json({msg: "This is wht shows: " + result[0].id});
+    })
+    .catch(error =>{
+      console.log('Error:', error);
+    });
+  
+  //res.render('hackathon');
 
-})
+});
+
+router.post('/addteams', (req, res) => {
+  Teams.create({
+    eventName: req.body.eventName,
+    teamName: req.body.teamName,
+    member1: req.body.member1,
+    member2: req.body.member2,
+    member3: req.body.member3,
+    member4: req.body.member4,
+
+  }).then((teams) => {
+    res.json({ msg: "team created"});
+  }).catch(() => { 
+    res.status(400).json({msg: "error making teams"});
+  });
+});
 
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/auth/error' }),
