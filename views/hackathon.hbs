@@ -32,7 +32,7 @@
 						<h5><strong>City:</strong> {{result.eventCity}}</h5>
 						<h5><strong>State:</strong> {{result.eventState}}</h5>
 						<h5><strong>Description: </strong> {{result.eventDescription}}Lorem ipsum dolor sit amet, tempor nostrum senserit an nec. His alia offendit in. Quodsi imperdiet vel te, cetero apeirian usu ut. Vis eu ornatus accusamus ullamcorper. Tollit eruditi postulant ius ne, ne nec timeam audire tibique. Nominavi corrumpit vix cu, dignissim argumentum cum ut, in facer choro omnes mei. Mea equidem phaedrum euripidis at, eu utamur eloquentiam est.	</h5>
-						<h5><strong>Languages:</strong> {{result2.id}}</h5> <!--Put drop-down menu here-->
+						<h5><strong>Languages:</strong> {{event_teams.id}}</h5> <!--Put drop-down menu here-->
 					</div>
 				</div>
 			</div>
@@ -68,15 +68,18 @@
   			<thead>
     			<tr>
       			<th scope="col">#</th>
-      			<th scope="col">Members</th>
+      			<th scope="col">Teams</th>
     			</tr>
   			</thead>
   			<tbody>
+  				{{#each event_teams}}
     			<tr>
       			<th scope="row">1</th>
-      			<td>Event Name | Location</td>
-      			<td>PySquad</td>
+      			<td>{{teamName}} </td>
+      			<td>{{member1}}	&nbsp {{member2}} &nbsp {{member3}}	&nbsp {{member4}}</td>
     			</tr>
+    			{{/each}}
+    			<!--
     			<tr>
       			<th scope="row">2</th>
       			<td>Event Name | Location</td>
@@ -93,8 +96,8 @@
     			</tr> 
     			<th scope="row">5</th>
       			<td>Event Name | Location</td>
-      			<td>Kimye</td>
-    			</tr> 
+      			<td>Kimye</td> 
+    			</tr> -->
   			</tbody>
 			</table>
 			</div>

@@ -45,13 +45,15 @@ router.post('/addhackathon', (req, res) => {
 });
 
 router.get('/hackathon', (req, res) => {
-  var result2;
   var param_id = req.param('id');
-  Hackathons.findAll({where:{id: '2'}, raw:true}).then((result) => {
-    result2 = result[0];
-  });
+
+  var event_teams;
+  Teams.findAll({where:{eventName: req.param('eventName')}, raw:true}).then((result) =>{
+    event_teams = result;
+  })
+
   Hackathons.findAll({where: {id: param_id}, raw: true}).then((result) => {
-      res.render('hackathon', {result: result[0], result2: result2});
+      res.render('hackathon', {result: result[0], event_teams: event_teams});
       //res.json({msg: "This is wht shows: " + result[0].id});
     })
     .catch(error =>{
@@ -72,7 +74,7 @@ router.post('/addteams', (req, res) => {
     member4: req.body.member4,
 
   }).then((teams) => {
-    res.json({ msg: "team created"});
+    res.redirect('/hackathonsadd');
   }).catch(() => { 
     res.status(400).json({msg: "error making teams"});
   });
