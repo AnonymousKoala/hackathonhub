@@ -25,7 +25,7 @@
 			<div class="greyBg">
 				<div class="row justify-content-center">
 					<div class="col-sm-3">
-						<img class="img-fluid profilePic" src="/assets/img/profilePic.png" width="180px" height="180px">
+						<img class="img-fluid profilePic" src="/assets/img/profilePic2.png" width="180px" height="180px">
 					</div>
 					<div class="col-sm-9 info">
 						<h1>{{userinfo.firstName}}  {{userinfo.lastName}} </h1>
@@ -79,7 +79,7 @@
   				{{#each event_teams}}
     			<tr>
       			<th scope="row">1</th>
-      			<td>{{eventName}} </td>
+      			<td><a href="/hackathon?eventName={{eventName}}">{{eventName}}</a> </td>
       			<td>{{teamName}}</td>
     			</tr>
     			{{/each}}

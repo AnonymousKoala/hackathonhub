@@ -88,7 +88,7 @@ router.post('/addteam', (req, res) => {
     teamName: req.param('teamName'),
     user: req.param('user'),
   }).then((userteams) =>{
-    res.json({msg:"added user to team to userteams"});
+    res.redirect('/hubDashboard?user=' + req.param('user'))
   }).catch(() => {
     res.status(400).json({msg:"error adding to userteams table"});
   });
@@ -188,7 +188,7 @@ router.get('/hackathonsadd', function(req,res){
 });
 
 router.get('/homepage',function(req,res){
-  res.sendFile(path.join(__dirname,'../public','mainPage/homepage.html'));
+  res.render('homepage');
 });
 
 
