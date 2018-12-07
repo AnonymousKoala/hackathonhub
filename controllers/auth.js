@@ -73,9 +73,30 @@ router.get('/hubDashboard', (req, res) => {
 
 });
 
+router.post('/addteam', (req, res) => {
+  var add_user = req.param('user');
+
+  Teams.update(
+    {member4: req.param('name')},
+    {where: {eventName: req.param('eventName')}
+  }).catch(() => {
+    res.stasus(400).json({msg:"error updating teams"});
+  });
+
+  Userteams.create({
+    eventName: req.param('eventName'),
+    teamName: req.param('teamName'),
+    user: req.param('user'),
+  }).then((userteams) =>{
+    res.json({msg:"added user to team to userteams"});
+  }).catch(() => {
+    res.status(400).json({msg:"error adding to userteams table"});
+  });
+});
+
 router.get('/hackathon', (req, res) => {
   var param_id = req.param('id');
-
+  var user = req.param('user');
 
   var event_teams;
   Teams.findAll({where:{eventName: req.param('eventName')}, raw:true}).then((result) =>{
@@ -83,9 +104,8 @@ router.get('/hackathon', (req, res) => {
     
   })
   
-
   Hackathons.findAll({where: {id: param_id}, raw: true}).then((result) => {
-      res.render('hackathon', {result: result[0], event_teams: event_teams});
+      res.render('hackathon', {result: result[0], event_teams: event_teams, username: user});
       //res.json({msg: "This is wht shows: " + result[0].id});
     })
     .catch(error =>{
