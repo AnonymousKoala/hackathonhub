@@ -112,7 +112,7 @@ a {
 .signUp-content {
 	width: 700px;
 	height: 400px;
-	background-color: rgba(178, 125, 41,.95);
+	background-color: rgba(102, 153, 255,.95);
 	border-radius: 5px;
 	text-align: left;
 	padding: 20px;
@@ -121,10 +121,10 @@ a {
 
 .popUpText{
 	text-align: center;
-	color: #1b302b;
+	color: white;
 	text-shadow: 2px 2px 5px #444; 
 	font-weight: 400;
-	font-size: 250%;
+	font-size: 200%;
 	 -webkit-text-stroke-color: rgba(0,0,0,0);
 	position: relative;
 }

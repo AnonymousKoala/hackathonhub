@@ -18,7 +18,7 @@
 					<h4 class="seeThru"><img src="/assets/img/location.png" width="30px" height="30px"><span>HACKATHON</span>HUB</h4>	
 				</div>	
 				<div class="col-lg-4">
-					<h4 class="Link"><a href="/homepage"> Home </a><a href="#"> Account </a><a href="#"> Help </a></h4>
+					<h4 class="Link"><a href="/homepage"> Home </a><a href="hubDashboard?user=jsmith"> Account </a><a href="#"> Help </a></h4>
 				</div>	
 			</div>
 
@@ -28,11 +28,14 @@
 						<img class="img-fluid profilePic" src="/assets/img/profilePic.png" width="180px" height="180px">
 					</div>
 					<div class="col-sm-9 info">
-						<h1>First & Last name </h1>
-						<h5><strong>Title:</strong> Professional|Student|Other</h5>
-						<h5><strong>Username:</strong> JohnDoe123</h5>
+						<h1>{{userinfo.firstName}}  {{userinfo.lastName}} </h1>
+						<h5><strong>Title:</strong> Student</h5>
+						<h5><strong>Username:</strong> {{userinfo.username}}</h5>
+						<h5><strong>Email:</strong> {{userinfo.email}}</h5>
 						<h5><strong>Description: </strong> Lorem ipsum dolor sit amet, tempor nostrum senserit an nec. His alia offendit in. Quodsi imperdiet vel te, cetero apeirian usu ut. Vis eu ornatus accusamus ullamcorper. Tollit eruditi postulant ius ne, ne nec timeam audire tibique. Nominavi corrumpit vix cu, dignissim argumentum cum ut, in facer choro omnes mei. Mea equidem phaedrum euripidis at, eu utamur eloquentiam est.	</h5>
-						<<h5><strong>Languages:</strong> </h5> <!--Put drop-down menu here-->
+						{{#each event_teams}}
+						<h5><strong>Languages: {{user}}</strong> </h5> <!--Put drop-down menu here-->
+						{{/each}}
 					</div>
 				</div>
 			</div>
@@ -73,11 +76,14 @@
     			</tr>
   			</thead>
   			<tbody>
+  				{{#each event_teams}}
     			<tr>
       			<th scope="row">1</th>
-      			<td>Event Name | Location</td>
-      			<td>PySquad</td>
+      			<td>{{eventName}} </td>
+      			<td>{{teamName}}</td>
     			</tr>
+    			{{/each}}
+    			<!--
     			<tr>
       			<th scope="row">2</th>
       			<td>Event Name | Location</td>
@@ -95,7 +101,7 @@
     			<th scope="row">5</th>
       			<td>Event Name | Location</td>
       			<td>Kimye</td>
-    			</tr> 
+    			</tr> -->
   			</tbody>
 			</table>
 			</div>

@@ -7,6 +7,7 @@ const User = models.User;
 const Hackathons = models.Hackathons;
 const Teams = models.Teams;
 const Attendees = models.Attendees;
+const Userteams = models.Userteams;
 
 
 var path = require('path');
@@ -41,6 +42,34 @@ router.post('/addhackathon', (req, res) => {
   }).catch(() => {
     res.status(400).json({msg : "error making hackathon"});
   });
+
+});
+
+router.post('/adduserteams', (req, res) => {
+  Userteams.create({
+    eventName: req.body.eventName,
+    teamName: req.body.teamName,
+    user: req.body.user,
+  }).then((userteams) =>{
+    res.redirect('/hackathonsadd');
+  }).catch(() => {
+    res.status(400).json({msg : "error making hackathon"});
+  });
+
+});
+
+router.get('/hubDashboard', (req, res) => {
+
+  var event_teams;
+  Userteams.findAll({where:{user: req.param('user')}, raw:true}).then((result) =>{
+    event_teams = result;
+  })
+
+  User.findAll({where:{username: req.param('user')}, raw: true}).then((result) =>{
+    res.render('hubDashboard', {userinfo: result[0], event_teams: event_teams});
+  })
+
+  //res.render('hubDashboard', {userinfo: userinfo.lastName});
 
 });
 
