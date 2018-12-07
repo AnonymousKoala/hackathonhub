@@ -23,12 +23,12 @@
 				<form action="/homepage" method="post">
   					<div class="form-group" id="emailForm">
     					<!-- <label for="exampleInputEmail1"></label> -->
-    					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EMAIL ADDRESS">
+    					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EMAIL ADDRESS" name="email">
     					<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
   					</div>
   					<div class="form-group" id="pwForm">
     					<!-- <label for="exampleInputPassword1">Password</label> -->
-    					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="PASSWORD">
+    					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="PASSWORD" name="password">
   					</div>
   					<button type="submit" class="btn btn-primary">Sign In</button>
   				</form>
@@ -44,13 +44,14 @@
 			<div class="signUp-content">
 				<div class="close">+</div>
 				<h3><img src="assets/img/hubSignUp.png" alt="hubSignUpLogo" width="200px" height="120px"><span class="popUpText">Join The Hub</span></h3>
-				<form action="">
-					<input class="popUp" type="form-text" placeholder="First Name">
-					<input class="popUp" type="form-text" placeholder="Last Name">
-					<input class="popUp" type="email" aria-describedby="emailHelp" placeholder="Email Address">
-					<input class="popUp" type="password" placeholder="Password">
-					<input class="popUp" type="password" placeholder="Re-Enter Password">
-					<button type="button" class="popUp">Join</button>
+				<form action="/signup" method="post">
+					<input class="popUp" type="form-text" placeholder="First Name" name="firstName">
+					<input class="popUp" type="form-text" placeholder="Last Name" name="lastName">
+					<input class="popUp" type="form-text" placeholder="Username" name="username">
+					<input class="popUp" type="email" aria-describedby="emailHelp" placeholder="Email Address" name="email">
+					<input class="popUp" type="password" placeholder="Password" name="password">
+					<input class="popUp" type="password" placeholder="Re-Enter Password" name="password2">
+					<button type="submit" class="popUp">Join</button>
 				</form>
 			</div>
 		</div>
