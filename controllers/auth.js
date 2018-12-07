@@ -76,10 +76,13 @@ router.get('/hubDashboard', (req, res) => {
 router.get('/hackathon', (req, res) => {
   var param_id = req.param('id');
 
+
   var event_teams;
   Teams.findAll({where:{eventName: req.param('eventName')}, raw:true}).then((result) =>{
     event_teams = result;
+    
   })
+  
 
   Hackathons.findAll({where: {id: param_id}, raw: true}).then((result) => {
       res.render('hackathon', {result: result[0], event_teams: event_teams});

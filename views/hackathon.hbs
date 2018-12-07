@@ -33,6 +33,10 @@
 						<h5><strong>State:</strong> {{result.eventState}}</h5>
 						<h5><strong>Description: </strong> {{result.eventDescription}}Lorem ipsum dolor sit amet, tempor nostrum senserit an nec. His alia offendit in. Quodsi imperdiet vel te, cetero apeirian usu ut. Vis eu ornatus accusamus ullamcorper. Tollit eruditi postulant ius ne, ne nec timeam audire tibique. Nominavi corrumpit vix cu, dignissim argumentum cum ut, in facer choro omnes mei. Mea equidem phaedrum euripidis at, eu utamur eloquentiam est.	</h5>
 						<h5><strong>Languages:</strong> {{event_teams.id}}</h5> <!--Put drop-down menu here-->
+						<br>
+						<form action="/addteam?={{result.id}}" method="post">
+							<input type="submit" name="addteam" value="Apply" />
+						</form>
 					</div>
 				</div>
 			</div>
@@ -76,7 +80,15 @@
     			<tr>
       			<th scope="row">{{@index}}</th>
       			<td>{{teamName}} </td>
-      			<td>{{member1}}	&nbsp {{member2}} &nbsp {{member3}}	&nbsp {{member4}}</td>
+      			<td>{{member1}}	&nbsp {{member2}} &nbsp {{member3}}	&nbsp {{member4}} 
+      			 
+				</td>
+				<td>
+					<form action="/addteam?={{teamName}}" method="post">
+						<input type="submit" name="addteam" value="Apply" />
+				</form>
+				</td>
+
     			</tr>
     			{{/each}}
     			<!--
