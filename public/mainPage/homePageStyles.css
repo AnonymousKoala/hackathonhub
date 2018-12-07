@@ -2,6 +2,8 @@ body {
 	background-color: #034439 !important;
 	background: linear-gradient(178deg, #034439, #2b6d62, #52beac, #3d9889, #034439);
 	background-repeat: no-repeat;
+	width: 100%;
+	height: 100%;
 
 }
 
@@ -139,3 +141,92 @@ hr {
 	color: white !important;
 	text-shadow: 1px 0px 25px #af6d0a;
 }
+
+.more-infoBg {
+	margin-left: -1.2%;
+	width: 100% !important;
+	height: 100%;/*
+	padding-bottom: 20%;
+	background-color: rgba(0,0,0,.7);*/
+	position: absolute;
+	top: 180%;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+
+.close {
+	padding-right: 3% !important;
+    padding-top: 1%;
+}
+
+.info-content {
+	background: linear-gradient(0deg, #da9235, #b0d2ce);
+	border-radius: 10px;
+	width: 740px;
+	height: 420px;
+	padding-left: 5%;
+}
+
+.info-area {
+	padding: 2% 0;
+	width: 100%;
+}
+
+.info-button {
+	padding: 2% 35%;
+}
+
+.btn {
+	background-color: #69af9d !important;
+	font-weight: 500;
+	color: #fff;
+	text-align: center;
+}
+
+.info-img {
+	border-radius: 5px;
+	border: 1px #606060;
+	border-style: solid; 
+}
+
+.info-event {
+	margin-bottom: -1%;
+	text-align: left;
+}
+
+#main-date{
+	font-family: sans-serif;
+	-webkit-text-stroke-color: #000;
+	color: #000;
+	font-weight: bold;
+}
+
+#main-location{
+	font-family: sans-serif;
+	-webkit-text-stroke-color: #000;
+	color: #000;
+	font-weight: bold;
+}
+
+#main-cost{
+	font-family: sans-serif;
+	-webkit-text-stroke-color: #000;
+	color: #000;
+	font-weight: bold;
+}
+
+#main-description{
+	font-family: sans-serif;
+	-webkit-text-stroke-color: #000;
+	color: #000;
+	font-weight: bold;
+}
+
+.hack-title {
+	margin-top: -8%;
+	font-weight: 600 !important;
+	color: black;
+	text-decoration: underline;
+}
+
