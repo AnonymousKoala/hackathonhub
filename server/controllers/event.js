@@ -86,6 +86,25 @@ module.exports = {
     .catch(error => res.status(400).send(error));
 },
 
+  searchEvent(req, res)
+  {
+    let keyword = req.params.eventName.toLowerCase();
+  return event
+    .findAll({where:{eventName: {$ilike: '%' + req.params.eventName + '%'}}})
+    //.findAll(
+    //  { where: {eventName: event.where(event.fn('LOWER', event.col('eventName')), 'LIKE', '%' + keyword+ '%')}})
+    .then(event =>
+    {
+      console.log(req.params.eventName);
+      if (!event)
+      {
+        return res.status(404).send({message: 'No results found.',});
+      }
+      return res.status(200).send(event);
+    })
+    .catch(error => res.status(400).send(error));
+  },
+
 
 
 };
