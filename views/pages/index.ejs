@@ -1,0 +1,55 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<script src="https://code.jquery.com/jquery-3.1.1.js"
+integrity=sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+crossorigin="anonymous"></script>
+<script type="text/javascript" src="javascripts/script.js"></script>
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <form action = "/searchreq" method= "post">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Search for events" value="">
+        </div>
+
+        <div class="form-group col-md-6">
+             <button type="submit" class="btn btn-primary" value="accept">Search</button>
+         </div>
+      </div>
+    </form>
+
+    <div class= "container">
+      <div class="row">
+        <% if(testing != null){ %>
+        <% for(var i=0; i < data.length; i++) { %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"> <%= data[i].eventName %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"> <%= data[i].timeStart %> to <%= data[i].timeEnd %> </h6>
+            <p class="card-text"> <%=data[i].eventAddress%> <br> <%=data[i].eventCity%> <%=data[i].eventZip%> </p>
+            <button type="button" class="btn btn-primary btn-sm"> View </button>
+          </div>
+        </div>
+        <% } %>
+        <% } %>
+    </div>
+  </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

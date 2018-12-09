@@ -24,12 +24,15 @@ app.get('/', function(req, res)
     res.render('pages/index',
         {
             testing: null,
+            data: null,
+            /*
             eventName: null,
             timeStart: null,
             timeEnd: null,
             eventAddress: null,
             eventCity: null,
             eventZip: null
+            */
         });
 });
 
@@ -63,23 +66,29 @@ app.post('/searchreq', function (req, res)
         res.render('pages/index', {testing: null, error: 'Error, please try again'});
       } else
       {
+
+        /*
         let eventName = searchResult.eventName;
         let timeStart = searchResult.timeStart;
         let timeEnd = searchResult.timeEnd;
         let eventAddress = searchResult.eventAddress;
         let eventCity = searchResult.eventCity;
         let eventZip = searchResult.eventZip;
+        */
 
         res.render('pages/index',
             {
                 testing:{},
+                /*
                 error: null,
                 eventName: eventName,
                 timeStart: timeStart,
                 timeEnd: timeEnd,
                 eventAddress:eventAddress,
                 eventCity: eventCity,
-                eventZip: eventZip
+                eventZip: eventZip,
+                */
+                data: searchResult,
             });
       }
     }
