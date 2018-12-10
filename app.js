@@ -24,15 +24,8 @@ app.get('/', function(req, res)
     res.render('pages/index',
         {
             testing: null,
+            start: null,
             data: null,
-            /*
-            eventName: null,
-            timeStart: null,
-            timeEnd: null,
-            eventAddress: null,
-            eventCity: null,
-            eventZip: null
-            */
         });
 });
 
@@ -45,7 +38,7 @@ app.post('/searchreq', function (req, res)
 {
   let event = req.body.eventName;
   let url = `http://localhost:8000/api/events/searchevent/${event}`;
-  console.log(req.body.eventName);
+  console.log("Search term inputted:" + req.body.eventName);
 
   request(url, function (err, response, body)
   {
@@ -60,34 +53,28 @@ app.post('/searchreq', function (req, res)
       let searchResult = JSON.parse(body)
 
       console.log(searchResult);
+      console.log(searchResult.length);
       if(searchResult == undefined)
       {
         console.log("Undefined Main of search result.");
         res.render('pages/index', {testing: null, error: 'Error, please try again'});
-      } else
+      }
+      else if(searchResult.length == 0)
       {
-
-        /*
-        let eventName = searchResult.eventName;
-        let timeStart = searchResult.timeStart;
-        let timeEnd = searchResult.timeEnd;
-        let eventAddress = searchResult.eventAddress;
-        let eventCity = searchResult.eventCity;
-        let eventZip = searchResult.eventZip;
-        */
-
+        console.log("Search result is empty");
+        res.render('pages/index',
+            {
+                testing: null,
+                start: 1,
+                data: null,
+            });
+      }
+      else
+      {
         res.render('pages/index',
             {
                 testing:{},
-                /*
-                error: null,
-                eventName: eventName,
-                timeStart: timeStart,
-                timeEnd: timeEnd,
-                eventAddress:eventAddress,
-                eventCity: eventCity,
-                eventZip: eventZip,
-                */
+                start: 1,
                 data: searchResult,
             });
       }

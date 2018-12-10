@@ -17,23 +17,23 @@ crossorigin="anonymous"></script>
 </header>
 
 <main>
+  <div class= "container">
     <form action = "/searchreq" method= "post">
       <div class="form-row">
-        <div class="form-group col-md-6">
-          <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Search for events" value="">
-        </div>
-
-        <div class="form-group col-md-6">
-             <button type="submit" class="btn btn-primary" value="accept">Search</button>
-         </div>
+         <div class="input-group mb-3">
+            <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Search for events">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-secondary" value="accept">Search</button>
+            </div>
+          </div>
       </div>
     </form>
 
-    <div class= "container">
       <div class="row">
-        <% if(testing != null){ %>
+        <% if( (testing != null) && (start != null)){ %>
         <% for(var i=0; i < data.length; i++) { %>
-        <div class="card" style="width: 18rem;">
+        <div class= "col-sm-3">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title"> <%= data[i].eventName %></h5>
             <h6 class="card-subtitle mb-2 text-muted"> <%= data[i].timeStart %> to <%= data[i].timeEnd %> </h6>
@@ -41,8 +41,15 @@ crossorigin="anonymous"></script>
             <button type="button" class="btn btn-primary btn-sm"> View </button>
           </div>
         </div>
+      </div>
         <% } %>
         <% } %>
+
+        <% if ((data == null) && (start != null)) { %>
+            <div class="alert alert-warning alert-dismissible fade show col-sm-12" role="alert">
+              <strong> No results found with those keywords. Please try again. </strong>
+            </div>
+            <%}%>
     </div>
   </div>
 </main>
