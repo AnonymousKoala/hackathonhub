@@ -34,6 +34,11 @@ app.get('/test', function(req, res)
     res.render('pages/test');
 });
 
+app.get('/event', function(req,res)
+{
+    res.render('pages/event');
+});
+
 app.post('/searchreq', function (req, res)
 {
   let event = req.body.eventName;
