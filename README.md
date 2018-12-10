@@ -32,7 +32,7 @@ HackathonHub
 │   └── www
 ├── package.json
 └── server
-    ├── config                    #Configuration files - change this to change database setup, etc.
+    ├── config                    * Configuration files - change this to change database setup, etc.
     │   └── config.json
     ├── controllers               * Controllers - used to access the database and change values.
     ├── migrations                * Migration Files - used to setup the database
