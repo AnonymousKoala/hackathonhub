@@ -1,5 +1,5 @@
 # Running the program
-Before running the program, you will to run the following to persists the model to the database:
+Before running the program, you will need to run the following to persists the model to the database:
 ```
 sequelize db:migrate
 ```
