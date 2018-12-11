@@ -29,14 +29,19 @@ app.get('/', function(req, res)
         });
 });
 
-app.get('/test', function(req, res)
-{
-    res.render('pages/test');
-});
-
+//**REMOVE**
 app.get('/event', function(req,res)
 {
     res.render('pages/event');
+
+    console.log(req.body);
+});
+
+app.get('/event/:eventID', function(req,res)
+{
+    res.render('pages/event');
+
+    console.log(req.body.hackathonData);
 });
 
 app.post('/searchreq', function (req, res)
@@ -54,11 +59,11 @@ app.post('/searchreq', function (req, res)
     }
     else
     {
-     console.log("Request made!");
+      console.log("Request made!");
       let searchResult = JSON.parse(body)
-
       console.log(searchResult);
-      console.log(searchResult.length);
+
+
       if(searchResult == undefined)
       {
         console.log("Undefined Main of search result.");
