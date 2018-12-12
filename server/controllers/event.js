@@ -29,10 +29,9 @@ module.exports = {
   retrieve(req, res)
   {
   return event
-    .findOne({where:{eventID: req.params.eventID}})
+    .findOne({where:{id: req.params.eventID}})
     .then(event =>
     {
-      console.log(req.params.eventID);
       if (!event)
       {
         return res.status(404).send({message: 'Event Not Found',});
@@ -44,7 +43,7 @@ module.exports = {
 
   update(req, res) {
   return event
-    .findOne({where:{eventID: req.params.eventID}})
+    .findOne({where:{id: req.params.eventID}})
     .then(event =>
     {
       if (!event)
@@ -71,7 +70,7 @@ module.exports = {
 
   destroy(req, res) {
   return event
-    .findOne({where:{eventID: req.params.eventID}})
+    .findOne({where:{id: req.params.eventID}})
     .then(event => {
       if (!event) {
         return res.status(400).send({

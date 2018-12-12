@@ -39,11 +39,11 @@ app.get('/event', function(req,res)
     console.log(req.body);
 });
 
-app.get('/event/:eventID', function(req,res)
+app.get('/event/:id', function(req,res)
 {
-    let eventID = req.params.eventID;
-    let url = `http://localhost:8000/api/events/${eventID}`;
-    console.log("EVENT ID: " + req.params.eventID);
+    let id = req.params.id;
+    let url = `http://localhost:8000/api/events/${id}`;
+    console.log("ID: " + req.params.id);
 
 
     request(url, function(err,response,body)
@@ -102,7 +102,7 @@ app.post('/createTeam', function(req,res) {
         console.log("Nice");
       }
     });
-  
+
 
 
   res.redirect('/event/' + eventID);

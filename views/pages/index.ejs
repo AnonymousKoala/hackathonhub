@@ -40,7 +40,7 @@ crossorigin="anonymous"></script>
               <h5 class="card-title"> <%= data[i].eventName %></h5>
               <h6 class="card-subtitle mb-2 text-muted"> <%= data[i].timeStart %> to <%= data[i].timeEnd %> </h6>
               <p class="card-text"> <%=data[i].eventAddress%> <br> <%=data[i].eventCity%> <%=data[i].eventZip%> </p>
-              <a class="btn btn-primary btn-sm" href="/event/<%= data[i].eventID %>" value="accept"> View </a>
+              <a class="btn btn-primary btn-sm" href="/event/<%= data[i].id %>" value="accept"> View </a>
             </div>
           </div>
       </div>
