@@ -3,6 +3,7 @@ const team = require('./team');
 const teamuser = require('./teamuser');
 const event = require('./event');
 const teamevent = require('./teamevent');
+const userevent = require('./userevent');
 
 module.exports = {
   user,
@@ -10,4 +11,5 @@ module.exports = {
   teamuser,
   event,
   teamevent,
+  userevent,
 };

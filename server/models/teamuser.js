@@ -1,25 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const teamuser = sequelize.define('teamuser', {
-    team_user_id:
-    {
-        type:DataTypes.INTEGER
-    },
-    teamID:
-    {
-        type:DataTypes.INTEGER
-    },
-    userID:
-    {
-        type: DataTypes.INTEGER
-    }
-
-  }, {});
-
-  teamuser.associate = (models) =>
+  const TeamUser = sequelize.define('TeamUser',
   {
-    teamuser.belongsTo(models.team);
-    teamuser.belongsTo(models.user);
+    title: DataTypes.STRING
+  }, {});
+  TeamUser.associate = function(models)
+  {
+    // associations can be defined here
   };
-  return teamuser;
+  return TeamUser;
 };

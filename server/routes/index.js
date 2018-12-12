@@ -1,8 +1,10 @@
 const userController = require('../controllers').user;
 const teamController = require('../controllers').team;
-const teamuserController = require('../controllers').teamuser;
+const teamUserController = require('../controllers').teamuser;
 const eventController = require('../controllers').event;
+
 const teamEventController = require('../controllers').teamevent;
+const userEventController = require('../controllers').userevent;
 
 
 module.exports = (app) =>
@@ -27,7 +29,18 @@ module.exports = (app) =>
   app.delete('/api/teams/:teamID', teamController.destroy);
 
   //TEAMUSER API CALLS.
-  app.post('/api/teamuser/:teamID/:userID', teamuserController.create);
+  app.post('/api/teamuser', teamUserController.create);
+  app.get('/api/teamuser',  teamUserController.list);
+  app.get('/api/teamuser/team=:teamID', teamUserController.retrieveTeam);
+  app.get('/api/teamuser/user=:userID', teamUserController.retrieveUser);
+  app.delete('/api/teamuser/team=:teamID/user=:userID', teamUserController.destroy)
+
+  //USEREVENT API CALLS:
+  app.post('/api/userevent', userEventController.create);
+  app.get('/api/userevent',  userEventController.list);
+  app.get('/api/userevent/user=:userID', userEventController.retrieveUser);
+  app.get('/api/userevent/event=:eventID', userEventController.retrieveEvent);
+  app.delete('/api/userevent/user=:userID/event=:eventID', userEventController.destroy)
 
   //TEAMEVENT API CALLS:
   app.post('/api/teamevent', teamEventController.create);

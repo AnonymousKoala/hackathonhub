@@ -1,23 +1,78 @@
-const teamuser = require('../models').teamuser;
+const TeamUser = require('../models').TeamUser;
 
 module.exports = {
   create(req, res)
   {
-    return teamuser
+    return TeamUser
       .create({
-        team_user_id: req.body.team_user_id,
-        teamID: req.params.teamID,
-        userID: req.params.userID,
+        title: req.body.title,
+        teamID: req.body.teamID,
+        userID: req.body.userID,
       })
-      .then(user => res.status(201).send(user))
+      .then(teamuser => res.status(201).send(teamuser))
       .catch(error => res.status(400).send(error));
   },
 
+  retrieveTeam(req, res)
+    {
+    return TeamUser
+      .findAll({where:{teamID: req.params.teamID}})
+      .then(teamuser=>
+      {
+        if (!TeamUser)
+        {
+          return res.status(404).send({message: 'TeamUser Not Found',});
+        }
+        return res.status(200).send(teamuser);
+      })
+      .catch(error => res.status(400).send(error));
+    },
+
+    retrieveUser(req, res)
+    {
+    return TeamUser
+      .findAll({where:{userID: req.params.userID}})
+      .then(teamuser=>
+      {
+        if (!TeamUser)
+        {
+          return res.status(404).send({message: 'TeamUser Not Found',});
+        }
+        return res.status(200).send(teamuser);
+      })
+      .catch(error => res.status(400).send(error));
+    },
+
+    destroy(req, res)
+      {
+      return TeamUser
+        .findAll({where:{userID: req.params.userID, teamID: req.params.teamID}})
+        .then(teamuser => {
+          if (!TeamUser)
+          {
+            return res.status(400).send({
+              message: 'Event Not Found',
+            });
+          }
+
+          return TeamUser
+            .destroy(
+                {where:{
+                    userID: req.params.userID,
+                    teamID: req.params.teamID
+                }
+            })
+            .then(() => res.status(204).send({message: 'TeamUser successfully deleted.'}))
+            .catch(error => res.status(400).send(error));
+        })
+        .catch(error => res.status(400).send(error));
+    },
+
   list(req,res)
   {
-    return user
+    return TeamUser
     .all()
-    .then(user=> res.status(200).send(user))
+    .then(teamuser=> res.status(200).send(teamuser))
     .catch(error => res.status(400).send(error))
   }
 };
