@@ -1,0 +1,89 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/head %>
+	
+
+	<title>HackathonHUB Dashboard</title>
+</head>
+<body>
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+	<main>
+		<div class="container-fluid">
+
+	
+
+			<div class="greyBg">
+				<div class="row justify-content-center">
+					<div class="col-sm-3">
+						<img class="img-fluid profilePic" src="img/profilePic.png" width="180px" height="180px">
+					</div>
+					<div class="col-sm-9 info">
+						<h1>First & Last name </h1>
+						<h5><strong>Title:</strong> Professional|Student|Other</h5>
+						<h5><strong>Username:</strong> JohnDoe123</h5>
+						<h5><strong>Description: </strong> Lorem ipsum dolor sit amet, tempor nostrum senserit an nec. His alia offendit in. Quodsi imperdiet vel te, cetero apeirian usu ut. Vis eu ornatus accusamus ullamcorper. Tollit eruditi postulant ius ne, ne nec timeam audire tibique. Nominavi corrumpit vix cu, dignissim argumentum cum ut, in facer choro omnes mei. Mea equidem phaedrum euripidis at, eu utamur eloquentiam est.	</h5>
+						<h5><strong>Languages:</strong> </h5> <!--Put drop-down menu here-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="lowerTwoThirds">
+			<div class="teamBg">
+			<table class="table table-striped">
+  			<thead>
+    			<tr>
+      			<th scope="col">#</th>
+      			<th scope="col">Upcoming Hackathons</th>
+      			<th scope="col">Teams</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+    			<tr>
+      			<th scope="row">1</th>
+      			<td>Event Name | Location</td>
+      			<td>PySquad</td>
+    			</tr>
+    			<tr>
+      			<th scope="row">2</th>
+      			<td>Event Name | Location</td>
+      			<td>Stellar</td>
+    			</tr>
+    			<tr>
+      			<th scope="row">3</th>
+      			<td>Event Name | Location</td>
+      			<td>Rocket</td>
+    			</tr> 
+    			<th scope="row">4</th>
+      			<td>Event Name | Location</td>
+      			<td>Konoha</td>
+    			</tr> 
+    			<th scope="row">5</th>
+      			<td>Event Name | Location</td>
+      			<td>Kimye</td>
+    			</tr> 
+  			</tbody>
+			</table>
+			</div>
+		</div>
+
+		<!-- I need to fix the way the teams are displayed, but this is the basic outline-->
+			
+
+	 </div>
+		
+	</main>
+
+
+	<footer>
+    	<% include ../partials/footer %>
+	</footer>
+</body>
+</html>

@@ -6,6 +6,7 @@ const request = require('request');
 
 // Set up the express app
 const app = express();
+app.use(express.static( "public" ));
 
 // Log requests to the console.
 app.use(logger('dev'));
@@ -98,7 +99,23 @@ app.get('/about', function(req, res)
     res.render('pages/about');
 });
 
+app.get('/account', function(req,res) {
+  res.render('pages/account');
+});
 
+app.get('/login', function(req,res) {
+  res.render('pages/login');
+});
+
+app.get('/index',function(req,res)
+{
+  res.render('pages/index');
+});
+
+app.post('/index',function(req,res)
+{
+  res.render('pages/index');
+});
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 require('./server/routes')(app);

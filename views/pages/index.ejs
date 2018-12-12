@@ -4,31 +4,32 @@
 <html lang="en">
 <head>
     <% include ../partials/head %>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
-<body class="container">
+<body class="container-fluid">
 
 <script src="https://code.jquery.com/jquery-3.1.1.js"
 integrity=sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
 crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script type="text/javascript" src="javascripts/script.js"></script>
+ <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+ <script>
+    particlesJS.load('particles-js', 'particles.json',
+    function () {
+      console.log('particles.json loaded...')
+    })
+</script>
 
 <header>
     <% include ../partials/header %>
 </header>
 
 <main>
-  <div class= "container">
-    <form action = "/searchreq" method= "post">
-      <div class="form-row">
-         <div class="input-group mb-3">
-            <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Search for events">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-outline-secondary" value="accept">Search</button>
-            </div>
-          </div>
-      </div>
-    </form>
-
+  <div class= "container-fluid">
       <div class="row">
         <% if( (testing != null) && (start != null)){ %>
         <% for(var i=0; i < data.length; i++) { %>
@@ -53,6 +54,103 @@ crossorigin="anonymous"></script>
             </div>
             <%}%>
     </div>
+
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ul class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ul>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="img/cs1.jpg" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Hackathon 1</h5>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="img/cs2.jpg" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Hackathon 2</h5>
+                          <p> Vestibulum risus lectus, semper sed malesuada quis, hendrerit nec felis.</p>
+                        </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="img/cs3.jpg" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Hackathon 3</h5>
+                          <p>Interdum et malesuada fames ac ante ipsum primis in faucibus</p>
+                        </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <div id="home" class="pfblock-image screen-height">
+      <div id="Create">
+        <h1 class="connect">Connect with other hackers!</h1>
+        <p class="subTitle">Find the hackathon you're attending and form your team</p>
+        <!-- <h3>Connect with other hackers</h3> -->
+      </div>
+      <div id="particles-js" class="row justify-content-center">    
+        <canvas class="particles-js-canvas-el" width="1230" height="616" style="width: 100%; height: 100%;"></canvas>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-sm-12 hacks">
+          <h2 class="upcoming-heading">Upcoming Hackathons</h2>
+          <hr>
+          <div id="infiniteScroll">
+          <ul class="media-list">
+              <li class="media my-4">
+                <img class="mt-1 mr-3" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1677c55b180%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1677c55b180%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.84375%22%20y%3D%2236.65%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+                <a href="#"><div class="media-list">
+                  <h5 class="mt-0 mb-1 event-name">Event Name | Date</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div></a>
+              </li>
+              <li class="media my-4">
+                <img class="mt-1 mr-3" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1677c55b180%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1677c55b180%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.84375%22%20y%3D%2236.65%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+                <a href="#"><div class="media-list">
+                  <h5 class="mt-0 mb-1 event-name">Event Name | Date</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div></a>
+              </li>
+              <li class="media my-4">
+                <img class="mt-1 mr-3" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1677c55b180%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1677c55b180%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.84375%22%20y%3D%2236.65%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+                <a href="#"><div class="media-list">
+                  <h5 class="mt-0 mb-1 event-name">Event Name | Date</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div></a>
+              </li>
+              <li class="media my-4">
+                <img class="mt-1 mr-3" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1677c55b180%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1677c55b180%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.84375%22%20y%3D%2236.65%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+                <a href="#"><div class="media-list">
+                  <h5 class="mt-0 mb-1 event-name">Event Name | Date</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div></a>
+              </li>
+              <li class="media my-4">
+                <img class="mt-1 mr-3" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1677c55b180%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1677c55b180%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.84375%22%20y%3D%2236.65%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+                <a href="#"><div class="media-list">
+                  <h5 class="mt-0 mb-1 event-name">Event Name | Date</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div></a>
+              </li>
+            </ul>
+        </div>
+        
+        </div>
+      </div>
   </div>
 </main>
 
