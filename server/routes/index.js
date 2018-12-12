@@ -2,12 +2,15 @@ const userController = require('../controllers').user;
 const teamController = require('../controllers').team;
 const teamuserController = require('../controllers').teamuser;
 const eventController = require('../controllers').event;
+const teamEventController = require('../controllers').teamevent;
+
 
 module.exports = (app) =>
 {
   app.get('/api', (req, res) => res.status(200).send({
     message: 'Welcome to the Hackathon Hubs API!',
   }));
+
 
   //USER API CALLS.
   app.post('/api/users', userController.create);
@@ -25,6 +28,13 @@ module.exports = (app) =>
 
   //TEAMUSER API CALLS.
   app.post('/api/teamuser/:teamID/:userID', teamuserController.create);
+
+  //TEAMEVENT API CALLS:
+  app.post('/api/teamevent', teamEventController.create);
+  app.get('/api/teamevent', teamEventController.list);
+  //app.get('/api/teams/:teamID', teamController.retrieve);
+  //app.put('/api/teams/:teamID', teamController.update);
+  //app.delete('/api/teams/:teamID', teamController.destroy);
 
   //EVENT API CALLS.
   app.post('/api/events', eventController.create);

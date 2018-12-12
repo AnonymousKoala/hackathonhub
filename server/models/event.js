@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     timeStart:
     {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
     },
     timeEnd:
     {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
     },
     eventDescription:
     {
@@ -38,8 +38,15 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 
-  event.associate = function(models) {
-    // associations can be defined here
+  event.associate = function(models)
+  {
+    event.belongsToMany(models.team,
+    {
+        through: models.teamEvent,
+        foreignKey: 'eventID',
+
+    })
+
   };
   return event;
 };

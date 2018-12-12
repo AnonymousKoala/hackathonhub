@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 module.exports = (sequelize, DataTypes) => {
   const team = sequelize.define('team', {
     teamID:
@@ -26,7 +26,14 @@ module.exports = (sequelize, DataTypes) => {
         through: models.teamuser,
         foreignKey: 'teamID',
       });
+    team.belongsToMany(models.event,
+      {
+        through: models.teamEvent,
+        foreignKey: 'teamID',
+      });
   };
+
+
 
   return team;
 };

@@ -7,6 +7,8 @@ const request = require('request');
 // Set up the express app
 const app = express();
 
+app.use(express.static( "public" ));
+
 // Log requests to the console.
 app.use(logger('dev'));
 
@@ -39,9 +41,43 @@ app.get('/event', function(req,res)
 
 app.get('/event/:eventID', function(req,res)
 {
-    res.render('pages/event');
+    let eventID = req.params.eventID;
+    let url = `http://localhost:8000/api/events/${eventID}`;
+    console.log("EVENT ID: " + req.params.eventID);
 
-    console.log(req.body.hackathonData);
+
+    request(url, function(err,response,body)
+    {
+      if(err)
+      {
+        console.log("Error on request: " + url);
+      }
+      else
+      {
+        console.log("Request made!");
+        let searchResult = JSON.parse(body)
+        console.log(searchResult);
+
+
+        if(searchResult == undefined)
+        {
+          console.log("Undefined Main of search result.");;
+        }
+        else if(searchResult.length == 0)
+        {
+          console.log("Search result is empty");
+        }
+        else
+        {
+          console.log("Rendering page...");
+          res.render('pages/event',
+              {
+                  eventInformation: searchResult,
+              });
+        }
+      }
+
+    });
 });
 
 app.post('/searchreq', function (req, res)

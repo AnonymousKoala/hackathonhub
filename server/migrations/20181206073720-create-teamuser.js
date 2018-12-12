@@ -11,11 +11,23 @@ module.exports = {
       team_user_id: {
         type: Sequelize.INTEGER
       },
-      teamID:{
-        type: Sequelize.INTEGER
+      teamID:
+      {
+        type: Sequelize.INTEGER,
+        references:
+          {
+            model: 'teams',
+            key: 'id',
+          }
       },
-      userID:{
-        type: Sequelize.INTEGER
+      userID:
+      {
+        type: Sequelize.INTEGER,
+        references:
+          {
+            model: 'users',
+            key: 'id',
+          }
       },
       createdAt: {
         allowNull: false,

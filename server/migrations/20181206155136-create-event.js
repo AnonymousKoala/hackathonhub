@@ -15,10 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       timeStart: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       timeEnd: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       eventDescription: {
         type: Sequelize.STRING
