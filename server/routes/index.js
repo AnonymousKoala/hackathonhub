@@ -1,13 +1,18 @@
 const userController = require('../controllers').user;
 const teamController = require('../controllers').team;
-const teamuserController = require('../controllers').teamuser;
+const teamUserController = require('../controllers').teamuser;
 const eventController = require('../controllers').event;
+
+const teamEventController = require('../controllers').teamevent;
+const userEventController = require('../controllers').userevent;
+
 
 module.exports = (app) =>
 {
   app.get('/api', (req, res) => res.status(200).send({
     message: 'Welcome to the Hackathon Hubs API!',
   }));
+
 
   //USER API CALLS.
   app.post('/api/users', userController.create);
@@ -24,7 +29,25 @@ module.exports = (app) =>
   app.delete('/api/teams/:teamID', teamController.destroy);
 
   //TEAMUSER API CALLS.
-  app.post('/api/teamuser/:teamID/:userID', teamuserController.create);
+  app.post('/api/teamuser', teamUserController.create);
+  app.get('/api/teamuser',  teamUserController.list);
+  app.get('/api/teamuser/team=:teamID', teamUserController.retrieveTeam);
+  app.get('/api/teamuser/user=:userID', teamUserController.retrieveUser);
+  app.delete('/api/teamuser/team=:teamID/user=:userID', teamUserController.destroy)
+
+  //USEREVENT API CALLS:
+  app.post('/api/userevent', userEventController.create);
+  app.get('/api/userevent',  userEventController.list);
+  app.get('/api/userevent/user=:userID', userEventController.retrieveUser);
+  app.get('/api/userevent/event=:eventID', userEventController.retrieveEvent);
+  app.delete('/api/userevent/user=:userID/event=:eventID', userEventController.destroy)
+
+  //TEAMEVENT API CALLS:
+  app.post('/api/teamevent', teamEventController.create);
+  app.get('/api/teamevent', teamEventController.list);
+  app.get('/api/teamevent/event=:eventID', teamEventController.retrieveEvent);
+  app.get('/api/teamevent/team=:teamID', teamEventController.retrieveTeam);
+  app.delete('/api/teamevent/event=:eventID/team=:teamID', teamEventController.destroy);
 
   //EVENT API CALLS.
   app.post('/api/events', eventController.create);

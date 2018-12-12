@@ -17,54 +17,51 @@ crossorigin="anonymous"></script>
 <main role="main" class="container">
       <div class="row">
         <div class="col-md-8 blog-main">
-          <h3 class="pb-3 mb-4 font-italic border-bottom">EVENT NAME </h3>
+          <h3 class="pb-3 mb-4 font-italic border-bottom"> <%= eventInformation.eventName %> </h3>
 
           <div class="blog-post">
             <h2 class="blog-post-title"> Details </h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vulputate mattis erat, nec luctus neque faucibus vel. Proin leo neque, tincidunt ut lectus id, imperdiet finibus orci. Mauris imperdiet malesuada nisi eget iaculis. Cras semper, urna nec varius suscipit, ante turpis malesuada orci, ut egestas tortor augue sit amet leo. Duis vitae sodales diam. Etiam ultricies nibh quis libero fringilla aliquet. Aenean at sem et ex vestibulum rutrum at vel ipsum. Nulla sed erat aliquet est imperdiet pharetra eget in odio.
-            </p>
-            <p>
-              Donec volutpat sapien eget ex porttitor, ut elementum lacus malesuada. Nulla facilisi. Suspendisse convallis consequat dapibus. Sed at dui mauris. Integer id libero est. Vestibulum quam purus, sollicitudin eget felis id, viverra convallis urna. Nam feugiat erat a purus elementum, ut vulputate felis tincidunt. Vestibulum ipsum tortor, molestie sit amet turpis nec, porta consectetur enim. Praesent non sollicitudin urna. Nullam facilisis neque vel feugiat aliquam posuere.
+              <%= eventInformation.eventDescription %>
             </p>
             <hr>
             <h2> Teams </h2>
+
             <div class="my-3 p-3 bg-white rounded box-shadow">
+              <% for(var i=0; i < teamEvent.length; i++) { %>
                 <div class="media text-muted pt-3">
                   <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
                   <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                     <div class="d-flex justify-content-between align-items-center w-100">
-                      <strong class="text-gray-dark"> Team Name </strong>
+                      <strong class="text-gray-dark"> <%= teamEvent[i].teamID %> </strong>
                       <a href="#"> Join </a>
                     </div>
                     <span class="d-block">Current Members: 4 </span>
                   </div>
                 </div>
-                <div class="media text-muted pt-3">
-                  <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-                  <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                      <strong class="text-gray-dark"> Team Name </strong>
-                      <a href="#"> Join </a>
-                    </div>
-                    <span class="d-block">Current Members: 4 </span>
-                  </div>
-                </div>
-                <div class="media text-muted pt-3">
-                  <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-                  <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                      <strong class="text-gray-dark"> Team Name </strong>
-                      <a href="#"> Join </a>
-                    </div>
-                    <span class="d-block">Current Members: 4 </span>
-                  </div>
-                </div>
+               <% } %>
+
+
 
                 <small class="d-block text-right mt-3">
                   <a href="#">View More Teams</a>
                 </small>
+
+                <!--
+                <small class="d-block text-left mt-3">
+                  <a >Create a Team!</a>
+                </small>
+                <form action="/createTeam" method="post">
+                    <input type="hidden" name="createID" value= <%= eventInformation.id %>>
+                    <input type="hidden" name="eventID" value= <%= eventInformation.evenID%>>
+
+                    <input type="text" placeholder="Team Name" name="teamName">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+              -->
+
               </div>
+
           </div><!-- /.blog-post -->
 
 
@@ -74,15 +71,15 @@ crossorigin="anonymous"></script>
           <div class="p-3 mb-3 bg-light rounded">
             <h4 class="font-italic">About</h4>
             <p class="mb-0">
-              Time Start:
+              Time Start: <%= eventInformation.timeStart %>
               <br>
-              Time End:
+              Time End: <%= eventInformation.timeEnd %>
             </p>
               <br>
             <p>
-              Address
+              <%= eventInformation.eventAddress %>
               <br>
-              City, State, Zip
+              <%= eventInformation.eventCity %> <%= eventInformation.eventZip %>
             </p>
           </div>
 

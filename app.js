@@ -6,6 +6,7 @@ const request = require('request');
 
 // Set up the express app
 const app = express();
+
 app.use(express.static( "public" ));
 
 // Log requests to the console.
@@ -38,11 +39,120 @@ app.get('/event', function(req,res)
     console.log(req.body);
 });
 
-app.get('/event/:eventID', function(req,res)
+app.get('/event/:id', function(req,res)
 {
-    res.render('pages/event');
+    let id = req.params.id;
+    let url = `http://localhost:8000/api/events/${id}`;
+    let urlTeamEvent = `http://localhost:8000/api/teamevent/event=${id}`
 
-    console.log(req.body.hackathonData);
+    let urlArray = [url,urlTeamEvent];
+    console.log("ID: " + req.params.id);
+    console.log(urlArray);
+
+    const promises = [];
+
+
+    promises.push(new Promise(function(resolve,reject)
+    {
+      request(url, function(err,response,body)
+      {
+        console.log("URL FOR FIRST PROMISE:" + url);
+        if(err)
+        {
+          console.log("Error on request: " + url);
+          reject(err);
+        }
+        else
+        {
+          let searchResult = JSON.parse(body);
+
+          if(searchResult == undefined)
+          {
+            console.log("Undefined Main of search result.");
+          }
+          else if(searchResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log(searchResult);
+            resolve(searchResult);
+          }
+        }
+      });
+    }));
+
+    promises.push(new Promise(function(resolve,reject)
+    {
+      request(urlTeamEvent, function(err,response,body)
+      {
+        console.log("URL FOR THE SECOND PROMISE:" + urlTeamEvent);
+        if(err)
+        {
+          console.log("Error on request: " + url);
+          reject(err);
+        }
+        else
+        {
+          console.log("Request made!");
+          let teamResult = JSON.parse(body);
+
+          if(teamResult == undefined)
+          {
+            console.log("Undefined Main of search result.");;
+          }
+          else if(teamResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log(teamResult);
+            resolve(teamResult);
+          }
+        }
+      });
+    }));
+
+
+    Promise.all(promises).then(function(listOfResolvedResults)
+    {
+      console.log("Entering promise.all");
+      res.render('pages/event',
+      {
+        eventInformation: listOfResolvedResults[0],
+        teamEvent: listOfResolvedResults[1],
+      })
+    });
+});
+
+app.post('/createTeam', function(req,res) {
+
+  let eventID = req.body.eventID;
+  let createID = req.body.createID;
+  let title = req.body.teamName;
+
+//Just letting teamID be eventID as a placeholder, as we need to implement team create here too, need to figure out how to pass to it afterwards
+  let teamID = req.body.eventID;
+  let url = `http://localhost:8000/api/teamevent`;
+
+//Insert teamID when testing
+  request.post({url, form: {eventID:eventID, title:title, teamID:teamID}}, function(err,response,body)
+    {
+      if(err)
+      {
+        console.log("Error on request: " + url);
+      }
+      else
+      {
+        console.log("Nice");
+      }
+    });
+
+
+
+  res.redirect('/event/' + eventID);
 });
 
 app.post('/searchreq', function (req, res)
@@ -99,23 +209,7 @@ app.get('/about', function(req, res)
     res.render('pages/about');
 });
 
-app.get('/account', function(req,res) {
-  res.render('pages/account');
-});
 
-app.get('/login', function(req,res) {
-  res.render('pages/login');
-});
-
-app.get('/index',function(req,res)
-{
-  res.render('pages/index');
-});
-
-app.post('/index',function(req,res)
-{
-  res.render('pages/index');
-});
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 require('./server/routes')(app);

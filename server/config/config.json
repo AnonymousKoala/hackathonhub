@@ -2,7 +2,7 @@
   "development": {
     "username": "student",
     "password": "cse320",
-    "database": "hackathon1",
+    "database": "hackathon3",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
