@@ -43,40 +43,87 @@ app.get('/event/:id', function(req,res)
 {
     let id = req.params.id;
     let url = `http://localhost:8000/api/events/${id}`;
+    let urlTeamEvent = `http://localhost:8000/api/teamevent/event=${id}`
+
+    let urlArray = [url,urlTeamEvent];
     console.log("ID: " + req.params.id);
+    console.log(urlArray);
+
+    const promises = [];
 
 
-    request(url, function(err,response,body)
+    promises.push(new Promise(function(resolve,reject)
     {
-      if(err)
+      request(url, function(err,response,body)
       {
-        console.log("Error on request: " + url);
-      }
-      else
-      {
-        console.log("Request made!");
-        let searchResult = JSON.parse(body)
-        console.log(searchResult);
-
-
-        if(searchResult == undefined)
+        console.log("URL FOR FIRST PROMISE:" + url);
+        if(err)
         {
-          console.log("Undefined Main of search result.");;
-        }
-        else if(searchResult.length == 0)
-        {
-          console.log("Search result is empty");
+          console.log("Error on request: " + url);
+          reject(err);
         }
         else
         {
-          console.log("Rendering page...");
-          res.render('pages/event',
-              {
-                  eventInformation: searchResult,
-              });
-        }
-      }
+          let searchResult = JSON.parse(body);
 
+          if(searchResult == undefined)
+          {
+            console.log("Undefined Main of search result.");
+          }
+          else if(searchResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log(searchResult);
+            resolve(searchResult);
+          }
+        }
+      });
+    }));
+
+    promises.push(new Promise(function(resolve,reject)
+    {
+      request(urlTeamEvent, function(err,response,body)
+      {
+        console.log("URL FOR THE SECOND PROMISE:" + urlTeamEvent);
+        if(err)
+        {
+          console.log("Error on request: " + url);
+          reject(err);
+        }
+        else
+        {
+          console.log("Request made!");
+          let teamResult = JSON.parse(body);
+
+          if(teamResult == undefined)
+          {
+            console.log("Undefined Main of search result.");;
+          }
+          else if(teamResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log(teamResult);
+            resolve(teamResult);
+          }
+        }
+      });
+    }));
+
+
+    Promise.all(promises).then(function(listOfResolvedResults)
+    {
+      console.log("Entering promise.all");
+      res.render('pages/event',
+      {
+        eventInformation: listOfResolvedResults[0],
+        teamEvent: listOfResolvedResults[1],
+      })
     });
 });
 

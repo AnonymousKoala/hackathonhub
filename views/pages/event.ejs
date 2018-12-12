@@ -28,51 +28,37 @@ crossorigin="anonymous"></script>
             <h2> Teams </h2>
 
             <div class="my-3 p-3 bg-white rounded box-shadow">
+              <% for(var i=0; i < teamEvent.length; i++) { %>
                 <div class="media text-muted pt-3">
                   <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
                   <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                     <div class="d-flex justify-content-between align-items-center w-100">
-                      <strong class="text-gray-dark"> Team Name </strong>
+                      <strong class="text-gray-dark"> <%= teamEvent[i].teamID %> </strong>
                       <a href="#"> Join </a>
                     </div>
                     <span class="d-block">Current Members: 4 </span>
                   </div>
                 </div>
-                <div class="media text-muted pt-3">
-                  <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-                  <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                      <strong class="text-gray-dark"> Team Name </strong>
-                      <a href="#"> Join </a>
-                    </div>
-                    <span class="d-block">Current Members: 4 </span>
-                  </div>
-                </div>
-                <div class="media text-muted pt-3">
-                  <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-                  <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                      <strong class="text-gray-dark"> Team Name </strong>
-                      <a href="#"> Join </a>
-                    </div>
-                    <span class="d-block">Current Members: 4 </span>
-                  </div>
-                </div>
+               <% } %>
+
+
 
                 <small class="d-block text-right mt-3">
                   <a href="#">View More Teams</a>
                 </small>
+
+                <!--
                 <small class="d-block text-left mt-3">
                   <a >Create a Team!</a>
                 </small>
                 <form action="/createTeam" method="post">
                     <input type="hidden" name="createID" value= <%= eventInformation.id %>>
-                    <input type="hidden" name="eventID" value= <%= eventInformation.eventID%>>
+                    <input type="hidden" name="eventID" value= <%= eventInformation.evenID%>>
 
                     <input type="text" placeholder="Team Name" name="teamName">
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>
-
+              -->
 
               </div>
 
