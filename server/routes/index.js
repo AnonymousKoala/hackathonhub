@@ -32,9 +32,9 @@ module.exports = (app) =>
   //TEAMEVENT API CALLS:
   app.post('/api/teamevent', teamEventController.create);
   app.get('/api/teamevent', teamEventController.list);
-  //app.get('/api/teams/:teamID', teamController.retrieve);
-  //app.put('/api/teams/:teamID', teamController.update);
-  //app.delete('/api/teams/:teamID', teamController.destroy);
+  app.get('/api/teamevent/event=:eventID', teamEventController.retrieveEvent);
+  app.get('/api/teamevent/team=:teamID', teamEventController.retrieveTeam);
+  app.delete('/api/teamevent/event=:eventID/team=:teamID', teamEventController.destroy);
 
   //EVENT API CALLS.
   app.post('/api/events', eventController.create);
