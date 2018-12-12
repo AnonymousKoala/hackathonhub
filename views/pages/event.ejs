@@ -26,6 +26,7 @@ crossorigin="anonymous"></script>
             </p>
             <hr>
             <h2> Teams </h2>
+
             <div class="my-3 p-3 bg-white rounded box-shadow">
                 <div class="media text-muted pt-3">
                   <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
@@ -61,7 +62,20 @@ crossorigin="anonymous"></script>
                 <small class="d-block text-right mt-3">
                   <a href="#">View More Teams</a>
                 </small>
+                <small class="d-block text-left mt-3">
+                  <a >Create a Team!</a>
+                </small>
+                <form action="/createTeam" method="post">
+                    <input type="hidden" name="createID" value= <%= eventInformation.id %>>
+                    <input type="hidden" name="eventID" value= <%= eventInformation.eventID%>>
+
+                    <input type="text" placeholder="Team Name" name="teamName">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+
+
               </div>
+
           </div><!-- /.blog-post -->
 
 

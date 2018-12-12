@@ -80,6 +80,34 @@ app.get('/event/:eventID', function(req,res)
     });
 });
 
+app.post('/createTeam', function(req,res) {
+
+  let eventID = req.body.eventID;
+  let createID = req.body.createID;
+  let title = req.body.teamName;
+
+//Just letting teamID be eventID as a placeholder, as we need to implement team create here too, need to figure out how to pass to it afterwards
+  let teamID = req.body.eventID;
+  let url = `http://localhost:8000/api/teamevent`;
+
+//Insert teamID when testing
+  request.post({url, form: {eventID:eventID, title:title, teamID:teamID}}, function(err,response,body)
+    {
+      if(err)
+      {
+        console.log("Error on request: " + url);
+      }
+      else
+      {
+        console.log("Nice");
+      }
+    });
+  
+
+
+  res.redirect('/event/' + eventID);
+});
+
 app.post('/searchreq', function (req, res)
 {
   let event = req.body.eventName;
