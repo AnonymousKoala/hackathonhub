@@ -3,8 +3,8 @@
 }
 
 body {
-	background-color: /*#034439*/ /*#1d1e22*/ #272822 /*#33363b*/ !important;
-	/*background: linear-gradient(178deg, #034439, #2b6d62, #52beac, #3d9889, #034439);*/
+	background-color: #034439 !important;
+	background: linear-gradient(178deg, #034439, #2b6d62, #52beac, #3d9889, #034439);
 	background-repeat: no-repeat;
 
 }
@@ -45,11 +45,6 @@ h2 {
 	font-size: 400%;
 }
 
-h5
-{
-	color: #feda6a;
-}
-
 .hacks {
 	height: 100%;
 	text-shadow: 1px 0px 15px #82805f;
@@ -75,15 +70,15 @@ img {
 
 
 span{
-   -webkit-text-stroke-width: 10 px;
-   color: #feda6a;
+    -webkit-text-stroke-width: .5px;
+   color: rgba(255,255,255,0);
    -webkit-text-stroke-color: white;
 }
 
 .about
 {
 	/*background-color: #feda6a;*/
-	color: #feda6a !important;
+	color: #feda6a;
 
 }
 
@@ -177,6 +172,10 @@ hr {
 
 }
 
+.footer {
+	text-align: center;
+}
+ 
 .media-list a:hover {
 	color: white !important;
 	text-shadow: 1px 0px 25px #af6d0a;
