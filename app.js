@@ -56,12 +56,12 @@ app.get('/', function(req, res)
             start: null,
             data: null,
         });
-
 });
 
 app.get('/search', function(req,res)
 {
   res.render('pages/search');
+3
 });
 
 
@@ -185,7 +185,6 @@ app.post('/createTeam', function(req,res) {
           if(err)
           {
             console.log("Error on create Team request at: " + url2);
-
           }
           else
           {
@@ -193,7 +192,6 @@ app.post('/createTeam', function(req,res) {
             let teamResult = JSON.parse(body);
             console.log(teamResult);
             resolve(teamResult);
-
           }
         });
     }));
@@ -516,7 +514,11 @@ app.get('/account/:id', function(req,res) {
             });
           }));*/
 
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> 3913787b617b2082b656f52037664ccebe777123
     });
 
 
