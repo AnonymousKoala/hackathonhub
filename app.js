@@ -2,6 +2,8 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
+var path = require('path');
+
 const request = require('request');
 
 // Set up the express app
@@ -304,13 +306,32 @@ app.post('/searchreq', function (req, res)
       }
     }
   });
-})
+});
 
 // about page
 app.get('/about', function(req, res)
 {
     res.render('pages/about');
 });
+
+app.get('/account', function(req, res)
+{
+  res.render('pages/account',
+    {
+
+      userData: null,
+      teamNames: null,
+    });
+});
+
+app.get('/account/:id', function(req, res)
+{
+  
+
+
+  //res.render('pages/account');
+});
+
 
 
 
