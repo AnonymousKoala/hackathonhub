@@ -152,22 +152,63 @@ app.get('/event/:id', function(req,res)
     Promise.all(promises).then(function(listOfResolvedResults)
     {
         let listOfTeamNames = [];
+        let listOfTeamIds = [];
 
         for(let x = 0; x < listOfResolvedResults[1].length;x++)
         {
             console.log(listOfResolvedResults[1][x].team.teamName);
             listOfTeamNames[x] = listOfResolvedResults[1][x].team.teamName;
+            listOfTeamIds[x] = listOfResolvedResults[1][x].team.id;
         }
 
         console.log("LIST OF NAME:")
         console.log(listOfTeamNames);
 
+        console.log("LIST OF Team IDS:")
+        console.log(listOfTeamIds);
+
         res.render('pages/event',
           {
+            teamIDs: listOfTeamIds,
             eventInformation: listOfResolvedResults[0],
             teamEvent: listOfTeamNames,
           })
     });
+});
+
+app.get('/jointeam/:teamid/:eventid', function(req,res) {
+
+  //Placeholder for ID - Need to hardcode this for demo
+
+  let eventID = req.params.eventid;
+  let placeholderUserID = 2;
+  let url = 'http://localhost:8000/api/teamuser';
+
+  request.post({url:'http://localhost:8000/api/userevent', form: {title: "n/a", eventID: req.params.eventid,  userID: placeholderUserID}}, function(err, response, body)
+  {
+    if(err)
+    {
+      console.log("Error on create Userevent request at: ");
+    }
+    else
+    {
+      console.log("Created userevent entry");
+    }
+  });
+
+  request.post({url:'http://localhost:8000/api/teamuser', form: {title: "n/a", teamID: req.params.teamid,  userID: placeholderUserID}}, function(err, response, body)
+  {
+    if(err)
+    {
+      console.log("Error on create Team request at: " + url);
+    }
+    else
+    {
+      console.log("Created teamuser entry");
+      res.redirect('/event/' + eventID);
+    }
+  });
+
 });
 
 app.post('/createTeam', function(req,res) {
