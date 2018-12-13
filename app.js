@@ -60,8 +60,10 @@ app.get('/', function(req, res)
 
 app.get('/search', function(req,res)
 {
-  res.render('pages/search');
-3
+  res.render('pages/search',
+    {
+      data:null,
+    });
 });
 
 
@@ -260,21 +262,15 @@ app.post('/searchreq', function (req, res)
       else if(searchResult.length == 0)
       {
         console.log("Search result is empty");
-        res.render('pages/index',
+        res.render('pages/search',
             {
-                eventslist: null,
-                testing: null,
-                start: 1,
                 data: null,
             });
       }
       else
       {
-        res.render('pages/index',
+        res.render('pages/search',
             {
-                eventslist: null,
-                testing:{},
-                start: 1,
                 data: searchResult,
             });
       }
@@ -513,12 +509,6 @@ app.get('/account/:id', function(req,res) {
               }
             });
           }));*/
-
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 3913787b617b2082b656f52037664ccebe777123
     });
 
 
