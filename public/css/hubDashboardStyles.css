@@ -5,6 +5,10 @@
   overflow: hidden;
 }*/
 
+.navbar{
+	box-shadow: none !important;
+}
+
 img {
 	margin-top: 1%;
 	margin-left: 2%;
