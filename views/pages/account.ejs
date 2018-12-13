@@ -25,11 +25,11 @@
 						<img class="img-fluid profilePic" src="img/profilePic.png" width="180px" height="180px">
 					</div>
 					<div class="col-sm-9 info">
-						<h1>First & Last name </h1>
-						<h5><strong>Title:</strong> Professional|Student|Other</h5>
-						<h5><strong>Username:</strong> JohnDoe123</h5>
-						<h5><strong>Description: </strong> Lorem ipsum dolor sit amet, tempor nostrum senserit an nec. His alia offendit in. Quodsi imperdiet vel te, cetero apeirian usu ut. Vis eu ornatus accusamus ullamcorper. Tollit eruditi postulant ius ne, ne nec timeam audire tibique. Nominavi corrumpit vix cu, dignissim argumentum cum ut, in facer choro omnes mei. Mea equidem phaedrum euripidis at, eu utamur eloquentiam est.	</h5>
-						<h5><strong>Languages:</strong> </h5> <!--Put drop-down menu here-->
+						<h1><%= userData.firstName %>   <%= userData.lastName %>  </h1>
+						<h5><strong>Title:</strong> Student</h5>
+						<h5><strong>Username:</strong> <%= userData.userName %> </h5>
+						<h5><strong>Description: </strong> <%= userData.firstDescription %>  --Now the extras:Lorem ipsum dolor sit amet, tempor nostrum senserit an nec. His alia offendit in. Quodsi imperdiet vel te, cetero apeirian usu ut. Vis eu ornatus accusamus ullamcorper. Tollit eruditi postulant ius ne, ne nec timeam audire tibique. Nominavi corrumpit vix cu, dignissim argumentum cum ut, in facer choro omnes mei. Mea equidem phaedrum euripidis at, eu utamur eloquentiam est.	</h5>
+						<h5><strong>Languages: Full Stack, Web Dev, Backend  <%= eventNames[0] %></strong> </h5> <!--Put drop-down menu here-->
 					</div>
 				</div>
 			</div>
@@ -46,11 +46,16 @@
     			</tr>
   			</thead>
   			<tbody>
+  				<% if(eventNames != null){ %>
+  				<% for(var i=0; i < eventNames.length; i++) { %>
     			<tr>
-      			<th scope="row">1</th>
-      			<td>Event Name | Location</td>
-      			<td>PySquad</td>
+      			<th scope="row"><%= i %></th>
+      			<td><%= eventNames[i] %> | Location</td>
+      			<td><%= teamNames[i] %> </td>
     			</tr>
+    			<% } %>
+    			<% } %>
+    			<!--
     			<tr>
       			<th scope="row">2</th>
       			<td>Event Name | Location</td>
@@ -68,7 +73,7 @@
     			<th scope="row">5</th>
       			<td>Event Name | Location</td>
       			<td>Kimye</td>
-    			</tr> 
+    			</tr>  -->
   			</tbody>
 			</table>
 			</div>

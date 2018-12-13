@@ -138,29 +138,67 @@ app.get('/event/:id', function(req,res)
 app.post('/createTeam', function(req,res) {
 
   let eventID = req.body.eventID;
-  let createID = req.body.createID;
   let title = req.body.teamName;
-
-//Just letting teamID be eventID as a placeholder, as we need to implement team create here too, need to figure out how to pass to it afterwards
-  let teamID = req.body.eventID;
   let url = `http://localhost:8000/api/teamevent`;
+  var teamResult;
 
-//Insert teamID when testing
-  request.post({url, form: {eventID:eventID, title:title, teamID:teamID}}, function(err,response,body)
+
+  const promises = [];
+
+    promises.push(new Promise(function(resolve,reject)
     {
-      if(err)
-      {
-        console.log("Error on request: " + url);
-      }
-      else
-      {
-        console.log("Nice");
-      }
+       request.post({url:'http://localhost:8000/api/teams', form: {teamID:eventID, teamName:req.body.teamName}}, function(err,response,body)
+        {
+          if(err)
+          {
+            console.log("Error on create Team request at: " + url2);
+
+          }
+          else
+          {
+            console.log("Created Team!");
+            let teamResult = JSON.parse(body);
+            console.log(teamResult);
+            resolve(teamResult);
+
+          }
+        });
+    }));
+
+
+    Promise.all(promises).then(function(createTeamResults)
+        {
+         console.log("What is this" + createTeamResults[0].id);
+         let resultteamID = createTeamResults[0].id;
+         const secondPromises = [];
+         secondPromises.push(new Promise(function(resolve,reject)
+            {
+              request.post({url, form: {eventID:eventID, title:title, teamID:resultteamID}}, function(err,response,body)
+                {
+                  if(err)
+                    {
+                      console.log("Error on request for second promise: " + url);
+
+                    }
+                  else
+                    {
+                      let teameventResult = JSON.parse(body);
+                      console.log("Teamresult:" + teameventResult);
+                      console.log("Success on second promise")
+                      resolve(teameventResult);
+                      //res.redirect('/event/' + eventID);
+
+                    }
+                });
+            }));
+
+            Promise.all(secondPromises).then(function(listOfResolvedResults)
+              {
+                console.log("Second Promises");
+                console.log("Resulting team ID:" + createTeamResults[0].id);
+                res.redirect('/event/' + eventID);
+              });
     });
-
-
-
-  res.redirect('/event/' + eventID);
 });
 
 app.post('/searchreq', function (req, res)
@@ -219,6 +257,228 @@ app.get('/about', function(req, res)
 
 app.get('/account', function(req,res) {
   res.render('pages/account');
+});
+
+app.get('/account/:id', function(req,res) {
+    let userID = req.params.id;
+    let urlUser = `http://localhost:8000/api/users/${userID}`;
+    let urlTeams = `http://localhost:8000/api/teamuser/user/${userID}`
+    const promises = [];
+
+
+    //Get the information for the event.
+    promises.push(new Promise(function(resolve,reject)
+    {
+      request(urlUser, function(err,response,body)
+      {
+        console.log("URL FOR FIRST PROMISE:" + urlUser);
+        if(err)
+        {
+          console.log("Error on request: " + urlUser);
+          reject(err);
+        }
+        else
+        {
+          let searchResult = JSON.parse(body);
+
+          if(searchResult == undefined)
+          {
+            console.log("Undefined Main of search result.");
+          }
+          else if(searchResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log("First Promise Results:");
+            console.log(searchResult);
+            resolve(searchResult);
+          }
+        }
+      });
+    }));
+
+    //Find the list of teams for the event.
+    promises.push(new Promise(function(resolve,reject)
+    {
+      request(urlTeams, function(err,response,body)
+      {
+        console.log("URL FOR THE SECOND PROMISE:" + urlTeams);
+        if(err)
+        {
+          console.log("Error on request: " + urlTeams);
+          reject(err);
+        }
+        else
+        {
+          console.log("Request made!");
+          let teamResult = JSON.parse(body);
+
+          if(teamResult == undefined)
+          {
+            console.log("Undefined Main of search result.");;
+          }
+          else if(teamResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log("Second Promise Results:");
+            console.log(teamResult);
+            resolve(teamResult);
+          }
+        }
+      });
+    }));
+
+
+    let userData;
+    let listTeamNames = [];
+    let listTeamIDs = [];
+
+    Promise.all(promises).then(function(listOfResolvedResults)
+    {
+        let listOfTeamNames = [];
+        let listOfTeamIDs = [];
+
+        for(let x = 0; x < listOfResolvedResults[1].length;x++)
+        {
+            console.log(listOfResolvedResults[1][x].team.teamName);
+            listOfTeamNames[x] = listOfResolvedResults[1][x].team.teamName;
+            listOfTeamIDs[x] = listOfResolvedResults[1][x].team.id;
+        }
+
+        console.log("LIST OF NAME:")
+        console.log(listOfTeamNames);
+
+        let userData = listOfResolvedResults[0];
+        let listTeamNames = listOfTeamNames;
+        let listTeamIDs = listOfTeamIDs;
+
+        console.log("Testing Variables:  userData");
+        console.log(userData);
+
+        console.log("listTeamNames");
+        console.log(listTeamNames);
+
+        console.log("listofTeamIDs");
+        console.log(listTeamIDs);
+
+        let secondPromises = [];
+        let urlEvents = `http://localhost:8000/api/teamevent/team/`;
+        let urlEventsFinal;
+
+
+        console.log("Loop below:");
+        for(let x = 0; x < listTeamIDs.length; x++)
+        {
+          console.log("here are listTeamIDs");
+          console.log(listTeamIDs[x]);
+          urlEventsFinal = urlEvents + listTeamIDs[x];
+
+          console.log(urlEventsFinal);
+
+          secondPromises.push(new Promise(function(resolve, reject)
+          {
+            request(urlEventsFinal, function(err,response,body)
+            {
+              if(err)
+              {
+                console.log("Error on request" + urlEventsFinal);
+                reject(err);
+              }
+              else
+              {
+                console.log("Request Made!");
+                let resultevents = JSON.parse(body);
+
+                if(resultevents == undefined)
+                {
+                  console.log("Undefined search result");
+                }
+                else if(resultevents.length == 0)
+                {
+                  console.log("Search result is empty");
+                }
+                else
+                {
+                  console.log(resultevents);
+                  resolve(resultevents);
+                }
+
+              }
+            });
+          }));
+
+
+        }
+
+        Promise.all(secondPromises).then(function(listOfResolvedResults)
+        {
+          let eventNames = [];
+          console.log("List of resolved results below:");
+          console.log(listOfResolvedResults);
+          for(let a = 0; a < listOfResolvedResults[0].length; a++)
+          {
+            eventNames[a] = listOfResolvedResults[0][a].event.eventName;
+          }
+
+          console.log(eventNames);
+          console.log(userData);
+          console.log(listTeamNames);
+          console.log(eventNames);
+
+          res.render('pages/account',
+          {
+            userData: userData,
+            teamNames: listTeamNames,
+            eventNames: eventNames,
+          })
+        });
+
+
+
+        /*
+
+        promises.push(new Promise(function(resolve,reject)
+          {
+            request(urlUser, function(err,response,body)
+            {
+              console.log("URL FOR FIRST PROMISE:" + urlUser);
+              if(err)
+              {
+                console.log("Error on request: " + urlUser);
+                reject(err);
+              }
+              else
+              {
+                let searchResult = JSON.parse(body);
+
+                if(searchResult == undefined)
+                {
+                  console.log("Undefined Main of search result.");
+                }
+                else if(searchResult.length == 0)
+                {
+                  console.log("Search result is empty");
+                }
+                else
+                {
+                  console.log("First Promise Results:");
+                  console.log(searchResult);
+                  resolve(searchResult);
+                }
+              }
+            });
+          }));*/
+
+        
+    });
+
+
+  //res.render('pages/account');
 });
 
 app.get('/index', function(req,res) {
