@@ -182,6 +182,18 @@ app.get('/jointeam/:teamid/:eventid', function(req,res) {
   let placeholderUserID = 2;
   let url = 'http://localhost:8000/api/teamuser';
 
+  request.post({url:'http://localhost:8000/api/userevent', form: {title: "n/a", eventID: req.params.eventid,  userID: placeholderUserID}}, function(err, response, body)
+  {
+    if(err)
+    {
+      console.log("Error on create Userevent request at: ");
+    }
+    else
+    {
+      console.log("Created userevent entry");
+    }
+  });
+
   request.post({url:'http://localhost:8000/api/teamuser', form: {title: "n/a", teamID: req.params.teamid,  userID: placeholderUserID}}, function(err, response, body)
   {
     if(err)
@@ -543,11 +555,6 @@ app.get('/account/:id', function(req,res) {
             });
           }));*/
 
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 3913787b617b2082b656f52037664ccebe777123
     });
 
 
