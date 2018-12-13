@@ -418,23 +418,27 @@ app.get('/account/:id', function(req,res) {
         Promise.all(secondPromises).then(function(listOfResolvedResults)
         {
           let eventNames = [];
+          let eventIDs = [];
           console.log("List of resolved results below:");
           console.log(listOfResolvedResults);
           for(let a = 0; a < listOfResolvedResults[0].length; a++)
           {
             eventNames[a] = listOfResolvedResults[0][a].event.eventName;
+            eventIDs[a] = listOfResolvedResults[0][a].event.id;
           }
 
           console.log(eventNames);
           console.log(userData);
           console.log(listTeamNames);
           console.log(eventNames);
+          console.log(eventIDs);
 
           res.render('pages/account',
           {
             userData: userData,
             teamNames: listTeamNames,
             eventNames: eventNames,
+            eventIDs: eventIDs,
           })
         });
 

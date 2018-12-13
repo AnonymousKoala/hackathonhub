@@ -50,7 +50,8 @@
   				<% for(var i=0; i < eventNames.length; i++) { %>
     			<tr>
       			<th scope="row"><%= i %></th>
-      			<td><%= eventNames[i] %> | Location</td>
+      			<td><a href="/event/<%= eventIDs[i]%>"> <%= eventNames[i] %> | </a>
+            </td>
       			<td><%= teamNames[i] %> </td>
     			</tr>
     			<% } %>
