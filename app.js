@@ -105,7 +105,7 @@ app.get('/event/:id', function(req,res)
           }
           else if(searchResult.length == 0)
           {
-            console.log("Search result is empty");
+            console.log("EVENT ID: Information is empty");
           }
           else
           {
@@ -138,7 +138,7 @@ app.get('/event/:id', function(req,res)
           }
           else if(teamResult.length == 0)
           {
-            console.log("Search result is empty");
+            console.log("EVENT ID: Team list is empty");
           }
           else
           {
@@ -154,25 +154,41 @@ app.get('/event/:id', function(req,res)
         let listOfTeamNames = [];
         let listOfTeamIds = [];
 
-        for(let x = 0; x < listOfResolvedResults[1].length;x++)
+        if(listOfResolvedResults[1].length == 0)
         {
-            console.log(listOfResolvedResults[1][x].team.teamName);
-            listOfTeamNames[x] = listOfResolvedResults[1][x].team.teamName;
-            listOfTeamIds[x] = listOfResolvedResults[1][x].team.id;
+            res.render('pages/event',
+            {
+                teamIDs: null,
+                eventInformation: listOfResolvedResults[0],
+                teamEvent: null,
+            });
         }
 
-        console.log("LIST OF NAME:")
-        console.log(listOfTeamNames);
+        else
+        {
+            for(let x = 0; x < listOfResolvedResults[1].length;x++)
+            {
+                console.log(listOfResolvedResults[1][x].team.teamName);
+                listOfTeamNames[x] = listOfResolvedResults[1][x].team.teamName;
+                listOfTeamIds[x] = listOfResolvedResults[1][x].team.id;
+            }
 
-        console.log("LIST OF Team IDS:")
-        console.log(listOfTeamIds);
+            console.log("LIST OF NAME:")
+            console.log(listOfTeamNames);
 
-        res.render('pages/event',
-          {
-            teamIDs: listOfTeamIds,
-            eventInformation: listOfResolvedResults[0],
-            teamEvent: listOfTeamNames,
-          })
+            console.log("LIST OF Team IDS:")
+            console.log(listOfTeamIds);
+
+
+            res.render('pages/event',
+              {
+                teamIDs: listOfTeamIds,
+                eventInformation: listOfResolvedResults[0],
+                teamEvent: listOfTeamNames,
+              })
+
+        }
+
     });
 });
 
@@ -412,7 +428,7 @@ app.get('/account/:id', function(req,res) {
     {
         let listOfTeamNames = [];
         let listOfTeamIDs = [];
-        
+
           for(let x = 0; x < listOfResolvedResults[1].length;x++)
           {
               if(listOfResolvedResults[1][x].team != null)
@@ -423,7 +439,7 @@ app.get('/account/:id', function(req,res) {
                 listOfTeamIDs[x] = listOfResolvedResults[1][x].team.id;
               }
           }
-      
+
         console.log("LIST OF NAME:")
         console.log(listOfTeamNames);
 
@@ -560,7 +576,7 @@ app.get('/account/:id', function(req,res) {
   //res.render('pages/account');
 });
 
-app.get('/team/:teamID/:eventID', function(req,res){ 
+app.get('/team/:teamID/:eventID', function(req,res){
     let teamID = req.params.teamID;
     let eventID = req.params.eventID;
     let urlTeam = `http://localhost:8000/api/teams/${teamID}`;
@@ -695,7 +711,7 @@ app.get('/team/:teamID/:eventID', function(req,res){
         console.log("eventdata");
         console.log(eventData);
 
-   
+
 
         console.log("listofTeamMembers");
         console.log(listofMembers);

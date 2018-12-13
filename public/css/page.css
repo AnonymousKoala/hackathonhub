@@ -75,6 +75,13 @@ span{
    -webkit-text-stroke-color: white;
 }
 
+.about
+{
+	/*background-color: #feda6a;*/
+	color: #feda6a;
+
+}
+
 a {
 	color: white !important;
   }
@@ -82,6 +89,11 @@ a {
 a.searchInfo
 {
 	color: #d4d4dc ! important;
+}
+
+p.detail-text
+{
+	color: #feda6a;
 }
 
 a:hover {
