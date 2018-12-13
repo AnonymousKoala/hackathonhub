@@ -49,20 +49,16 @@ crossorigin="anonymous"></script>
                 <small class="d-block text-right mt-3">
                   <a href="#">View More Teams</a>
                 </small>
-
-                 <% if(eventInformation != null){ %>
+                -->
                 <small class="d-block text-left mt-3">
-                  <a >Create a Team!</a>
+                  <a style="color:rgb(66,134,244)">Create a Team!</a>
                 </small>
                 <form action="/createTeam" method="post">
-                    <input type="hidden" name="createID" value= <%= eventInformation.id %>>
-                    <input type="hidden" name="eventID" value= <%= eventInformation.evenID%>>
-
+                    <input type="hidden" name="eventID" value= <%= eventInformation.id %>>
                     <input type="text" placeholder="Team Name" name="teamName">
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>
-                <% } %>
-              -->
+                
 
               </div>
 
