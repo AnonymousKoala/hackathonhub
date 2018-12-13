@@ -47,6 +47,7 @@ module.exports = (app) =>
   app.get('/api/teamevent', teamEventController.list);
   app.get('/api/teamevent/event=:eventID', teamEventController.retrieveEvent);
   app.get('/api/teamevent/team=:teamID', teamEventController.retrieveTeam);
+  app.get('/api/teamevent/model/:teamID', teamEventController.findAssociateTeam);
   app.delete('/api/teamevent/event=:eventID/team=:teamID', teamEventController.destroy);
 
   //EVENT API CALLS.

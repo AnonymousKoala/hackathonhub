@@ -76,7 +76,20 @@ module.exports = {
         .catch(error => res.status(400).send(error));
     })
     .catch(error => res.status(400).send(error));
-}
+  },
+
+  findAssociateTeam(req,res)
+  {
+    return TeamEvent
+    .findAll({
+      include:[{
+        model: team,
+        where: {id: req.params.teamID}
+      }]
+    })
+    .then(teamevent => {return res.status(200).send(teamevent);})
+    .catch(error => res.status(400).send(error))
+  }
 
 
 
