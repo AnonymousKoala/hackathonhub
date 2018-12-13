@@ -45,6 +45,11 @@ h2 {
 	font-size: 400%;
 }
 
+h5
+{
+	color: #feda6a;
+}
+
 .hacks {
 	height: 100%;
 	text-shadow: 1px 0px 15px #82805f;
@@ -78,7 +83,7 @@ span{
 .about
 {
 	/*background-color: #feda6a;*/
-	color: #feda6a;
+	color: #feda6a !important;
 
 }
 
