@@ -23,7 +23,7 @@ app.set('view engine','ejs');
 // index page
 app.get('/', function(req, res)
 {
-    res.render('pages/index',
+    res.render('pages/login',
         {
             testing: null,
             start: null,
@@ -31,13 +31,14 @@ app.get('/', function(req, res)
         });
 });
 
-//**REMOVE**
-app.get('/event', function(req,res)
-{
-    res.render('pages/event');
 
-    console.log(req.body);
-});
+// //**REMOVE**
+// app.get('/event', function(req,res)
+// {
+//     res.render('pages/event');
+
+//     console.log(req.body);
+// });
 
 app.get('/event/:id', function(req,res)
 {
@@ -272,6 +273,38 @@ app.get('/about', function(req, res)
     res.render('pages/about');
 });
 
+app.get('/account', function(req,res) {
+  res.render('pages/account');
+});
+
+app.get('/index', function(req,res) {
+   res.render('pages/index',
+        {
+            testing: null,
+            start: null,
+            data: null,
+        });
+});
+
+app.post('/index', function(req,res) {
+   res.render('pages/index',
+        {
+            testing: null,
+            start: null,
+            data: null,
+        });
+});
+
+app.get('/event', function(req,res)
+{
+    res.render('pages/event',
+        {
+            eventInformation: null,
+            teamEvent: null,
+        });
+
+    console.log(req.body);
+});
 
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
