@@ -10,8 +10,6 @@ module.exports = (sequelize, DataTypes) => {
 
   TeamEvent.associate = function(models)
   {
-    TeamEvent.belongsTo(models.team);
-    TeamEvent.belongsTo(models.event);
   };
 
   return TeamEvent;

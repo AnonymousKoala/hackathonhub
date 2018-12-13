@@ -78,6 +78,7 @@ module.exports = {
     .catch(error => res.status(400).send(error));
   },
 
+  /**
   findAssociateTeam(req,res)
   {
     return TeamEvent
@@ -90,6 +91,7 @@ module.exports = {
     .then(teamevent => {return res.status(200).send(teamevent);})
     .catch(error => res.status(400).send(error))
   }
+  **/
 
 
 

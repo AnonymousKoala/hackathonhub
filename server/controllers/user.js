@@ -28,7 +28,7 @@ module.exports = {
   retrieve(req, res)
   {
   return user
-    .findOne({where:{userID: req.params.userID}})
+    .findOne({where:{id: req.params.userID}})
     .then(user =>
     {
       console.log(req.params.userID);
@@ -43,7 +43,7 @@ module.exports = {
 
   update(req, res) {
   return user
-    .findOne({where:{userID: req.params.userID}})
+    .findOne({where:{id: req.params.userID}})
     .then(user =>
     {
       if (!user)
@@ -70,7 +70,7 @@ module.exports = {
 
   destroy(req, res) {
   return user
-    .findOne({where:{userID: req.params.userID}})
+    .findOne({where:{id: req.params.userID}})
     .then(user => {
       if (!user) {
         return res.status(400).send({

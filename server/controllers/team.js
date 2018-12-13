@@ -21,7 +21,7 @@ module.exports = {
   retrieve(req, res)
   {
   return team
-    .findOne({where:{teamID: req.params.teamID}})
+    .findOne({where:{id: req.params.teamID}})
     .then(team =>
     {
       console.log(req.params.teamID);
@@ -36,7 +36,7 @@ module.exports = {
 
   update(req, res) {
   return team
-    .findOne({where:{teamID: req.params.teamID}})
+    .findOne({where:{id: req.params.teamID}})
     .then(team =>
     {
       if (!team)
@@ -57,7 +57,7 @@ module.exports = {
 
   destroy(req, res) {
   return team
-    .findOne({where:{teamID: req.params.teamID}})
+    .findOne({where:{id: req.params.teamID}})
     .then(team => {
       if (!team) {
         return res.status(400).send({
