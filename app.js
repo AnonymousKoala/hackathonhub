@@ -23,12 +23,42 @@ app.set('view engine','ejs');
 // index page
 app.get('/', function(req, res)
 {
+  let url = `http://localhost:8000/api/events`;
+  request(url, function(err,response,body)
+      {
+        console.log("URL FOR FIRST PROMISE:" + url);
+        if(err)
+        {
+          console.log("Error on request: " + url);
+          reject(err);
+        }
+        else
+        {
+          let searchResult = JSON.parse(body);
+
+          if(searchResult == undefined)
+          {
+            console.log("Undefined Main of search result.");
+          }
+          else if(searchResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log(searchResult);
+            
+          }
+        }
+      });
+
     res.render('pages/login',
         {
             testing: null,
             start: null,
             data: null,
         });
+
 });
 
 
@@ -212,7 +242,7 @@ app.post('/searchreq', function (req, res)
     if(err)
     {
         console.log("Error on request: " + url);
-      res.render('pages/index', {testing: null, error: 'Error, please try again'});
+      res.render('pages/index', {eventslist: null, testing: null, error: 'Error, please try again'});
     }
     else
     {
@@ -231,6 +261,7 @@ app.post('/searchreq', function (req, res)
         console.log("Search result is empty");
         res.render('pages/index',
             {
+                eventslist: null,
                 testing: null,
                 start: 1,
                 data: null,
@@ -240,6 +271,7 @@ app.post('/searchreq', function (req, res)
       {
         res.render('pages/index',
             {
+                eventslist: null,
                 testing:{},
                 start: 1,
                 data: searchResult,
@@ -427,11 +459,14 @@ app.get('/account/:id', function(req,res) {
             eventIDs[a] = listOfResolvedResults[0][a].event.id;
           }
 
+          //Console log for testing purposes
+          /*
           console.log(eventNames);
           console.log(userData);
           console.log(listTeamNames);
           console.log(eventNames);
           console.log(eventIDs);
+          */
 
           res.render('pages/account',
           {
@@ -486,17 +521,53 @@ app.get('/account/:id', function(req,res) {
 });
 
 app.get('/index', function(req,res) {
-   res.render('pages/index',
+  let url = `http://localhost:8000/api/events`;
+  let events = [];
+  request(url, function(err,response,body)
+      {
+        console.log("URL FOR FIRST PROMISE:" + url);
+        if(err)
         {
-            testing: null,
-            start: null,
-            data: null,
-        });
+          console.log("Error on request: " + url);
+          reject(err);
+        }
+        else
+        {
+          let searchResult = JSON.parse(body);
+
+          if(searchResult == undefined)
+          {
+            console.log("Undefined Main of search result.");
+          }
+          else if(searchResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log(searchResult);
+            let events = searchResult;
+
+            console.log("below is events");
+             console.log(events);
+             res.render('pages/index',
+                  {
+                      eventslist: events,
+                      testing: null,
+                      start: null,
+                      data: null,
+                  });
+
+          }
+        }
+      });
+
 });
 
 app.post('/index', function(req,res) {
    res.render('pages/index',
         {
+           eventslist: null,
             testing: null,
             start: null,
             data: null,
