@@ -416,14 +416,18 @@ app.get('/account/:id', function(req,res) {
     {
         let listOfTeamNames = [];
         let listOfTeamIDs = [];
+        
+          for(let x = 0; x < listOfResolvedResults[1].length;x++)
+          {
+              if(listOfResolvedResults[1][x].team != null)
+              {
+                console.log(listOfResolvedResults[1][x].team.teamName);
 
-        for(let x = 0; x < listOfResolvedResults[1].length;x++)
-        {
-            console.log(listOfResolvedResults[1][x].team.teamName);
-            listOfTeamNames[x] = listOfResolvedResults[1][x].team.teamName;
-            listOfTeamIDs[x] = listOfResolvedResults[1][x].team.id;
-        }
-
+                listOfTeamNames[x] = listOfResolvedResults[1][x].team.teamName;
+                listOfTeamIDs[x] = listOfResolvedResults[1][x].team.id;
+              }
+          }
+      
         console.log("LIST OF NAME:")
         console.log(listOfTeamNames);
 
@@ -560,6 +564,217 @@ app.get('/account/:id', function(req,res) {
 
   //res.render('pages/account');
 });
+
+app.get('/team/:teamID/:eventID', function(req,res){ 
+    let teamID = req.params.teamID;
+    let eventID = req.params.eventID;
+    let urlTeam = `http://localhost:8000/api/teams/${teamID}`;
+    let urlEvent = `http://localhost:8000/api/events/${eventID}`;
+    let urlMembers = `http://localhost:8000/api/teamuser/team/${teamID}`;
+    const promises = [];
+
+
+    //Find the team details
+    promises.push(new Promise(function(resolve,reject)
+    {
+      request(urlTeam, function(err,response,body)
+      {
+        console.log("URL FOR FIRST PROMISE:" + urlTeam);
+        if(err)
+        {
+          console.log("Error on request: " + urlTeam);
+          reject(err);
+        }
+        else
+        {
+          let searchResult = JSON.parse(body);
+
+          if(searchResult == undefined)
+          {
+            console.log("Undefined Main of search result.");
+          }
+          else if(searchResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log("Team Details Results:");
+            console.log(searchResult);
+            resolve(searchResult);
+          }
+        }
+      });
+    }));
+
+    //Find the event details
+    promises.push(new Promise(function(resolve,reject)
+    {
+      request(urlEvent, function(err,response,body)
+      {
+        console.log("URL FOR THE SECOND PROMISE:" + urlEvent);
+        if(err)
+        {
+          console.log("Error on request: " + urlEvent);
+          reject(err);
+        }
+        else
+        {
+          console.log("Request made!");
+          let eventResult = JSON.parse(body);
+
+          if(eventResult == undefined)
+          {
+            console.log("Undefined Main of search result.");;
+          }
+          else if(eventResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log("Event details Results:");
+            console.log(eventResult);
+            resolve(eventResult);
+          }
+        }
+      });
+    }));
+
+    //Find all team members
+    promises.push(new Promise(function(resolve,reject)
+    {
+      request(urlMembers, function(err,response,body)
+      {
+        console.log("URL FOR THE SECOND PROMISE:" + urlMembers);
+        if(err)
+        {
+          console.log("Error on request: " + urlMembers);
+          reject(err);
+        }
+        else
+        {
+          console.log("Request made!");
+          let membersResult = JSON.parse(body);
+
+          if(membersResult == undefined)
+          {
+            console.log("Undefined Main of search result.");;
+          }
+          else if(membersResult.length == 0)
+          {
+            console.log("Search result is empty");
+          }
+          else
+          {
+            console.log("Members Results:");
+            console.log(membersResult);
+            resolve(membersResult);
+          }
+        }
+      });
+    }));
+
+
+    let eventData;
+    let teamData;
+    let listofMembers = [];
+    Promise.all(promises).then(function(listOfResolvedResults)
+    {
+        let listOfTeamMembers;
+        for(let x = 0; x < listOfResolvedResults[2].length;x++)
+        {
+            console.log(listOfResolvedResults[2][x].user.userName);
+        }
+
+        console.log("LIST OF USERNAMEs:")
+        console.log(listOfTeamMembers);
+
+        let teamData = listOfResolvedResults[0];
+        let eventData = listOfResolvedResults[1];
+        let listofMembers = listOfResolvedResults[2];
+
+        console.log("Testing Variables:  teamData");
+        console.log(teamData);
+
+        console.log("eventdata");
+        console.log(eventData);
+
+   
+
+        console.log("listofTeamMembers");
+        console.log(listofMembers);
+        console.log(listofMembers[0].user.userName);
+
+        res.render('pages/team', {
+            teamData: teamData,
+            eventData: eventData,
+            teamMembers: listofMembers,
+        });
+
+        /*
+        console.log("Loop below:");
+        for(let x = 0; x < listTeamIDs.length; x++)
+        {
+          console.log("here are listTeamIDs");
+          console.log(listTeamIDs[x]);
+          urlEventsFinal = urlEvents + listTeamIDs[x];
+
+          console.log(urlEventsFinal);
+
+          secondPromises.push(new Promise(function(resolve, reject)
+          {
+            request(urlEventsFinal, function(err,response,body)
+            {
+              if(err)
+              {
+                console.log("Error on request" + urlEventsFinal);
+                reject(err);
+              }
+              else
+              {
+                console.log("Request Made!");
+                let resultevents = JSON.parse(body);
+
+                if(resultevents == undefined)
+                {
+                  console.log("Undefined search result");
+                }
+                else if(resultevents.length == 0)
+                {
+                  console.log("Search result is empty");
+                }
+                else
+                {
+                  console.log(resultevents);
+                  resolve(resultevents);
+                }
+
+              }
+            });
+          }));
+
+
+        }
+
+        Promise.all(secondPromises).then(function(listOfResolvedResults)
+        {
+          let eventNames = [];
+          let eventIDs = [];
+          console.log("List of resolved results below:");
+          console.log(listOfResolvedResults);
+          for(let a = 0; a < listOfResolvedResults[0].length; a++)
+          {
+            eventNames[a] = listOfResolvedResults[0][a].event.eventName;
+            eventIDs[a] = listOfResolvedResults[0][a].event.id;
+          }
+
+        });*/
+
+
+      //res.render('pages/team');
+      });
+    });
 
 app.get('/index', function(req,res) {
   let url = `http://localhost:8000/api/events`;
