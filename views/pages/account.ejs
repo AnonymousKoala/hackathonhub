@@ -22,7 +22,7 @@
 			<div class="greyBg">
 				<div class="row justify-content-center">
 					<div class="col-sm-3">
-						<img class="img-fluid profilePic" src="img/profilePic.png" width="180px" height="180px">
+						<img class="img-fluid profilePic" src="/img/profilePic.png" width="180px" height="180px">
 					</div>
 					<div class="col-sm-9 info">
 						<h1><%= userData.firstName %>   <%= userData.lastName %>  </h1>
@@ -46,7 +46,8 @@
     			</tr>
   			</thead>
   			<tbody>
-  				<% if(eventNames != null){ %>
+          <% if(teamNames != null) { %>
+   				<% if(eventNames != null){ %>
   				<% for(var i=0; i < eventNames.length; i++) { %>
     			<tr>
       			<th scope="row"><%= i %></th>
@@ -56,6 +57,7 @@
     			</tr>
     			<% } %>
     			<% } %>
+          <% } %>
     			<!--
     			<tr>
       			<th scope="row">2</th>
