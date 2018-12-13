@@ -193,29 +193,69 @@ app.get('/event/:id', function(req,res)
 app.post('/createTeam', function(req,res) {
 
   let eventID = req.body.eventID;
-  let createID = req.body.createID;
   let title = req.body.teamName;
-
-//Just letting teamID be eventID as a placeholder, as we need to implement team create here too, need to figure out how to pass to it afterwards
-  let teamID = req.body.eventID;
   let url = `http://localhost:8000/api/teamevent`;
+  var teamResult;
 
-//Insert teamID when testing
-  request.post({url, form: {eventID:eventID, title:title, teamID:teamID}}, function(err,response,body)
+
+  const promises = [];
+
+    promises.push(new Promise(function(resolve,reject)
     {
-      if(err)
-      {
-        console.log("Error on request: " + url);
-      }
-      else
-      {
-        console.log("Nice");
-      }
-    });
+       request.post({url:'http://localhost:8000/api/teams', form: {teamID:eventID, teamName:req.body.teamName}}, function(err,response,body)
+        {
+          if(err)
+          {
+            console.log("Error on create Team request at: " + url2);
+
+          }
+          else
+          {
+            console.log("Created Team!");
+            let teamResult = JSON.parse(body);
+            console.log(teamResult);
+            resolve(teamResult);
+
+          }
+        });
+    }));
 
 
+    Promise.all(promises).then(function(createTeamResults)
+        {
+         console.log("What is this" + createTeamResults[0].id);
+         let resultteamID = createTeamResults[0].id;
+         const secondPromises = [];
+         secondPromises.push(new Promise(function(resolve,reject)
+            {
+              request.post({url, form: {eventID:eventID, title:title, teamID:resultteamID}}, function(err,response,body)
+                {
+                  if(err)
+                    {
+                      console.log("Error on request for second promise: " + url);
 
-  res.redirect('/event/' + eventID);
+                    }
+                  else
+                    {
+                      let teameventResult = JSON.parse(body);
+                      console.log("Teamresult:" + teameventResult);
+                      console.log("Success on second promise")
+                      resolve(teameventResult);
+                      //res.redirect('/event/' + eventID);
+
+                    }
+                });
+            }));
+
+            Promise.all(secondPromises).then(function(listOfResolvedResults)
+              {
+                console.log("Second Promises");
+                console.log("Resulting team ID:" + createTeamResults[0].id);
+                res.redirect('/event/' + eventID);
+              });
+        });
+
+
 });
 
 app.post('/searchreq', function (req, res)
