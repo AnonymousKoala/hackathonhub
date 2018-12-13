@@ -39,23 +39,17 @@ app.get('/event', function(req,res)
             eventInformation: null,
             teamEvent: null,
         });
-}
-
-// //**REMOVE**
-// app.get('/event', function(req,res)
-// {
-//     res.render('pages/event');
-
-//     console.log(req.body);
-// });
+});
 
 app.get('/event/:id', function(req,res)
 {
     let id = req.params.id;
     let url = `http://localhost:8000/api/events/${id}`;
-    let urlTeamEvent = `http://localhost:8000/api/teamevent/event=${id}`
+    let urlTeamEvent = `http://localhost:8000/api/teamevent/event/${id}`
     const promises = [];
 
+
+    //Get the information for the event.
     promises.push(new Promise(function(resolve,reject)
     {
       request(url, function(err,response,body)
@@ -87,6 +81,7 @@ app.get('/event/:id', function(req,res)
       });
     }));
 
+    //Find the list of teams for the event.
     promises.push(new Promise(function(resolve,reject)
     {
       request(urlTeamEvent, function(err,response,body)
@@ -119,85 +114,25 @@ app.get('/event/:id', function(req,res)
       });
     }));
 
-    let eventInformationTemp = [];
-    let listOfTeams = [];
-    let team;
-
-
     Promise.all(promises).then(function(listOfResolvedResults)
     {
-        eventInformationTemp = listOfResolvedResults[0];
+        let listOfTeamNames = [];
 
-        for(let i = 0; i < listOfResolvedResults[1].length; i++)
+        for(let x = 0; x < listOfResolvedResults[1].length;x++)
         {
-            listOfTeams[i] = listOfResolvedResults[1][i].teamID;
+            console.log(listOfResolvedResults[1][x].team.teamName);
+            listOfTeamNames[x] = listOfResolvedResults[1][x].team.teamName;
         }
 
-        console.log("List of Teams:" + listOfTeams);
+        console.log("LIST OF NAME:")
+        console.log(listOfTeamNames);
 
-        const secondPromises = [];
-        let urlTeam = 'http://localhost:8000/api/teams/';
-        let finalUrlTeam;
-
-        console.log("Length of list of teams:" + listOfTeams.length);
-
-        for(let x = 0; x < listOfTeams.length; x++)
-        {
-            console.log("Enterred the second Promise.")
-            finalUrlTeam = urlTeam + listOfTeams[x];
-            console.log(finalUrlTeam);
-
-            secondPromises.push(new Promise(function(resolve,reject)
-            {
-              request(finalUrlTeam, function(err,response,body)
-              {
-                if(err)
-                {
-                  console.log("Error on request: " + url);
-                  reject(err);
-                }
-                else
-                {
-                  console.log("Request made!");
-                  let teams = JSON.parse(body);
-
-                  if(teams == undefined)
-                  {
-                    console.log("Undefined Main of search result.");;
-                  }
-                  else if(teams.length == 0)
-                  {
-                    console.log("Search result is empty");
-                  }
-                  else
-                  {
-                    console.log(teams);
-                    resolve(teams);
-                  }
-                }
-              });
-            }));
-        }
-
-        Promise.all(secondPromises).then(function(listOfResolvedResults)
-        {
-            let teamNames = [];
-            console.log(listOfResolvedResults);
-            for(let a = 0; a < listOfResolvedResults.length; a++)
-            {
-                teamNames[a] = listOfResolvedResults[a].teamName;
-            }
-
-            console.log(teamNames);
-
-          res.render('pages/event',
+        res.render('pages/event',
           {
-            eventInformation: eventInformationTemp,
-            teamEvent: listOfResolvedResults,
+            eventInformation: listOfResolvedResults[0],
+            teamEvent: listOfTeamNames,
           })
-        });
     });
-
 });
 
 app.post('/createTeam', function(req,res) {
