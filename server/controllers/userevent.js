@@ -1,4 +1,6 @@
 const UserEvent = require('../models').UserEvent;
+const user = require('../models').user;
+const event = require('../models').event;
 
 module.exports = {
   create(req, res) {
@@ -74,7 +76,39 @@ module.exports = {
         .catch(error => res.status(400).send(error));
     })
     .catch(error => res.status(400).send(error));
-}
+  },
+
+  findAssociateUser(req,res)
+  {
+    return UserEvent
+    .findAll({
+      attributes: [
+      ],
+      include: [{
+        model: user,
+        as: 'user'
+      }],
+      where: {eventID: req.params.eventID}
+    })
+    .then(userevent => {return res.status(200).send(userevent);})
+    .catch(error => res.status(400).send(error))
+  },
+
+  findAssociateEvent(req,res)
+  {
+    return UserEvent
+    .findAll({
+      attributes: [
+      ],
+      include: [{
+        model: event,
+        as: 'event'
+      }],
+      where: {userID: req.params.userID}
+    })
+    .then(userevent => {return res.status(200).send(userevent);})
+    .catch(error => res.status(400).send(error))
+  },
 
 
 };

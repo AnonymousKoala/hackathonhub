@@ -1,4 +1,6 @@
 const TeamEvent = require('../models').TeamEvent;
+const team = require('../models').team;
+const event = require('../models').event;
 
 module.exports = {
   create(req, res) {
@@ -78,21 +80,38 @@ module.exports = {
     .catch(error => res.status(400).send(error));
   },
 
-  /**
+
   findAssociateTeam(req,res)
   {
     return TeamEvent
     .findAll({
-      include:[{
+      attributes: [
+      ],
+      include: [{
         model: team,
-        where: {id: req.params.teamID}
-      }]
+        as: 'team'
+      }],
+      where: {eventID: req.params.eventID}
     })
     .then(teamevent => {return res.status(200).send(teamevent);})
     .catch(error => res.status(400).send(error))
-  }
-  **/
+  },
 
+  findAssociateEvent(req,res)
+  {
+    return TeamEvent
+    .findAll({
+      attributes: [
+      ],
+      include: [{
+        model: event,
+        as: 'event'
+      }],
+      where: {teamID: req.params.teamID}
+    })
+    .then(teamevent => {return res.status(200).send(teamevent);})
+    .catch(error => res.status(400).send(error))
+  },
 
 
 };

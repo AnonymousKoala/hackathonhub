@@ -33,6 +33,8 @@ module.exports = (app) =>
   app.get('/api/teamuser',  teamUserController.list);
   app.get('/api/teamuser/team=:teamID', teamUserController.retrieveTeam);
   app.get('/api/teamuser/user=:userID', teamUserController.retrieveUser);
+  app.get('/api/teamuser/user/:userID', teamUserController.findAssociateTeam);
+  app.get('/api/teamuser/team/:teamID', teamUserController.findAssociateUser);
   app.delete('/api/teamuser/team=:teamID/user=:userID', teamUserController.destroy)
 
   //USEREVENT API CALLS:
@@ -40,6 +42,8 @@ module.exports = (app) =>
   app.get('/api/userevent',  userEventController.list);
   app.get('/api/userevent/user=:userID', userEventController.retrieveUser);
   app.get('/api/userevent/event=:eventID', userEventController.retrieveEvent);
+  app.get('/api/userevent/user/:userID', userEventController.findAssociateEvent);
+  app.get('/api/userevent/event/:eventID', userEventController.findAssociateUser);
   app.delete('/api/userevent/user=:userID/event=:eventID', userEventController.destroy)
 
   //TEAMEVENT API CALLS:
@@ -47,7 +51,8 @@ module.exports = (app) =>
   app.get('/api/teamevent', teamEventController.list);
   app.get('/api/teamevent/event=:eventID', teamEventController.retrieveEvent);
   app.get('/api/teamevent/team=:teamID', teamEventController.retrieveTeam);
-  //app.get('/api/teamevent/model/:teamID', teamEventController.findAssociateTeam);
+  app.get('/api/teamevent/event/:eventID', teamEventController.findAssociateTeam);
+  app.get('/api/teamevent/team/:teamID', teamEventController.findAssociateEvent);
   app.delete('/api/teamevent/event=:eventID/team=:teamID', teamEventController.destroy);
 
   //EVENT API CALLS.

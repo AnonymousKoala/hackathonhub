@@ -1,4 +1,6 @@
 const TeamUser = require('../models').TeamUser;
+const team = require('../models').team;
+const user = require('../models').user;
 
 module.exports = {
   create(req, res)
@@ -74,5 +76,37 @@ module.exports = {
     .all()
     .then(teamuser=> res.status(200).send(teamuser))
     .catch(error => res.status(400).send(error))
-  }
+  },
+
+  findAssociateTeam(req,res)
+  {
+    return TeamUser
+    .findAll({
+      attributes: [
+      ],
+      include: [{
+        model: team,
+        as: 'team'
+      }],
+      where: {userID: req.params.userID}
+    })
+    .then(teamuser => {return res.status(200).send(teamuser);})
+    .catch(error => res.status(400).send(error))
+  },
+
+  findAssociateUser(req,res)
+  {
+    return TeamUser
+    .findAll({
+      attributes: [
+      ],
+      include: [{
+        model: user,
+        as: 'user'
+      }],
+      where: {teamID: req.params.teamID}
+    })
+    .then(teamuser => {return res.status(200).send(teamuser);})
+    .catch(error => res.status(400).send(error))
+  },
 };

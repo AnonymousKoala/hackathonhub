@@ -34,7 +34,11 @@ app.get('/', function(req, res)
 //**REMOVE**
 app.get('/event', function(req,res)
 {
-    res.render('pages/event');
+    res.render('pages/event',
+        {
+            eventInformation: null,
+            teamEvent: null,
+        });
 
     console.log(req.body);
 });
