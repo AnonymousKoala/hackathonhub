@@ -14,7 +14,7 @@ body {
 }
 
 .navbar-custom {
-    background-color:rgba(5,5,5,0);
+    background-color:rgba(5,5,5,0) !important;
 }
 
 #particles-js {
