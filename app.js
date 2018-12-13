@@ -1,7 +1,6 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-
 const request = require('request');
 
 // Set up the express app
@@ -29,6 +28,11 @@ app.get('/', function(req, res)
             start: null,
             data: null,
         });
+});
+
+app.get('/search', function(req,res)
+{
+  res.render('pages/search');
 });
 
 
